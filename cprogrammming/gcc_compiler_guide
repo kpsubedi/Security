@@ -1,0 +1,9 @@
+
+1. GCC
+
+to stop compiler at the assembler phase, leaving the assembly language 
+in the file <file_name>.s
+gcc -S <file_name>.c
+
+2.
+
