@@ -1,0 +1,13 @@
+Introduction
+when we are interacting with web application, 
+our friend is urllib2 modules like socket module for network application.
+Example:-
+
+To do get request to www.google.com
+
+import urllib2
+
+urlhandle = urllib2.urlopen("httP://www.google.com");
+print urlhandle.read()
+
+
