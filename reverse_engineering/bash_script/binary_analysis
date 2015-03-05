@@ -1,0 +1,4 @@
+1. strings   <binary_file>
+
+2. objdump -T <elf_file> | awk '{print $1, $NF}'
+
