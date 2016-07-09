@@ -1,6 +1,5 @@
 #!/usr/bin/python
-# 
-
+# finding matching characters in given two strings and return the count of matches
 def count_match_in_string(str1, str2):
     count = 0
     for i in range(len(str2)):
