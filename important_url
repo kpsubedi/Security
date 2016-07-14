@@ -1,35 +1,26 @@
-CTP Writeup
-
+[CTP Writeup]
 https://trailofbits.github.io/ctf/
 http://shell-storm.org/
 https://www.corelan.be/
 http://blog.ioactive.com/
 http://computer-forensics.safemode.org/
 
-Find Sample Exploit
-
+[Find Sample Exploit]
 http://www.exploit-db.com/papers/
 http://www.securityfocus.com/
-
 http://www.fuzzysecurity.com/
 https://technet.microsoft.com/en-us/sysinternals/bb842062.aspx
-
 https://github.com/superponible
 http://www.cs.fsu.edu/~lawrence/OffNetSec/lectures.htmlhttp://www.cs.fsu.edu/~lawrence/OffNetSec/lectures.html
 
-Virtualization
-
+[Virtualization]
 http://pve.proxmox.com/wiki/DRBD
 http://pve.proxmox.com/wiki/Main_Page
-
 http://openvz.org/Main_Page
-
 http://web.stanford.edu/class/cs259d/
 
-Operating System and System Programming
-
+[Operating System and System Programming]
 http://cs162.eecs.berkeley.edu/
-
 http://ospp.cs.washington.edu/slides.html
 http://codex.cs.yale.edu/avi/os-book/OS9/practice-exer-dir/index.html
 http://www.cl.cam.ac.uk/~rja14/book.html
@@ -44,3 +35,5 @@ http://www.securitysift.com/windows-exploit-development-part-1-basics/
 [C-Programming]
 http://c.learncodethehardway.org/book/
 
+[Shell Coding]
+http://www.vividmachines.com/shellcode/shellcode.html
