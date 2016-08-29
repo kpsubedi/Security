@@ -1,0 +1,9 @@
+str = 'sample input'
+
+convert string to hex
+
+import binascii
+hex_eq = binascii.b2a_hex(str)
+
+print hex_eq
+
