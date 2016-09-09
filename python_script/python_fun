@@ -1,0 +1,24 @@
+1. Input Function: Whatever is read from stdin gets immediately evaluated as Python code:
+$python
+>>>
+
+>>>input()
+__import__('pty').spawn('/bin/bash')
+bash-3.2$
+Clearly, the input() function must never ever be used unless data on a script's stdin is fully trusted. Python 2 
+documentation suggests raw_input() as a safe alternative. In Python 3, the input() function becomes equivalent to raw_input() 
+thus fixing this weakness once and forever.
+
+2.Reusable Integers
+
+Everything is an object in Python. Every object has a unique identity which can be read by the id() function. 
+To figure out if two variables or attributes are pointing to the same object the is operator can be used. 
+Integers are objects so the is operation is indeed defined for them:
+>>> 999 + 1 is 1000
+False
+
+If the outcome of the above operation looks surprising, keep in mind that the is operator works with identities 
+of two objects -- it does not compare their numerical, or any other, values. However:
+>>> 1+1 is 2
+True
+
