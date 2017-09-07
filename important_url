@@ -16,7 +16,7 @@ https://rng.mistakenot.net/disasm-eval/
 
 [Fuzzer]
 https://github.com/google/syzkaller
-
+ftrace : debugged
 
 [Malware]
 https://cysinfo.com/7th-meetup-reversing-and-investigating-malware-evasive-tactics-hollow-process-injection/
