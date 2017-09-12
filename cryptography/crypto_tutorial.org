@@ -7,3 +7,97 @@ hex_eq = binascii.b2a_hex(str)
 
 print hex_eq
 
+######
+#!/usr/bin/python
+import binascii
+#ord(...)
+#    ord(c) -> integer 
+#    Return the integer ordinal of a one-character string.
+
+print 'integer, charater, hex\n'
+for ch in 'computer security':
+    print ord(ch), chr(ord(ch)), binascii.hexlify(ch)
+
+
+#zip(...)
+#    zip(seq1, [, seq2 [...]]) -> [(seq1[0], seq2[0] ...),(...)]
+# Return a list of tuples, where each tuple contains the i-th element 
+# from each of the argument sequences. The returned list is truncated
+# in length to the length of the shorter argument sequence.
+
+val1='4445464748'
+val2='4445464748'
+
+print zip(val1, val2)
+ 
+val11='4445464748'
+val12='44454647'
+
+print zip(val11, val12)
+
+
+import string
+print string.printable
+print string.lowercase
+print string.uppercase
+print string.octdigits
+
+######
+
+import itertools
+
+message='This is very interesting demo'
+key='KUL'
+
+# This is very interesting demo from demo perspective
+# KULKULKULKULKULKULKULKULKULKU
+
+print zip(message, itertools.cycle(key))
+
+######
+
+import hashlib
+
+m = hashlib.md5()
+
+m.update('a')
+print m.hexdigest()
+
+######
+import hmac
+import md5
+
+
+hash_key = 'comp4410'
+
+hash = hmac.new(hash_key, 'This is computer security', md5)
+print hash.hexdigest()
+
+######OTP###
+import sys
+
+MSGS = ('kul' )
+
+def strxor(a, b):     # xor two strings of different lengths
+    if len(a) > len(b):
+       return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a[:len(b)], b)])
+    else:
+       return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b[:len(a)])])
+
+def random(size=16):
+    return open("/dev/urandom").read(size)
+
+def encrypt(key, msg):
+    c = strxor(key, msg)
+    print
+    print c.encode('hex')
+    return c
+
+def main():
+    key = random(1024)
+    ciphertexts = [encrypt(key, msg) for msg in MSGS]
+
+if __name__=='__main__':
+    main()
+    
+    #######
