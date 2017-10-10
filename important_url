@@ -64,7 +64,7 @@ https://plus.google.com/events/cfhoop7t1gjfj8521qal2op0gqs: 6
 https://plus.google.com/events/c3k62bjbejqask8oeo0k9g7udfs: 7
 https://plus.google.com/events/cuka83ubhrsc8kdntqb358b31bo: 8
 https://plus.google.com/events/c5m09sqo2rqskq3ddv7m3fniges: 9
-https://www.youtube.com/watch?v=qBVThFwdYTc : Very Nice
+
 
 [XSS]
 http://phpsecurity.readthedocs.io/en/latest/Cross-Site-Scripting-(XSS).html
@@ -80,6 +80,13 @@ https://www.owasp.org/index.php/OWASP_Juice_Shop_Project : Vulnerable Applicatio
 
 [SQL Injection]
 https://www.youtube.com/watch?v=rdyQoUNeXSg&feature=relmfu
+   | |
+   | |
+ --  --
+ \    /
+   \ /
+https://www.youtube.com/watch?v=qBVThFwdYTc
+
 https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection
 http://pentestmonkey.net/blog/mssql-sql-injection-cheat-sheet/
 http://pentestmonkey.net/blog/mysql-sql-injection-cheat-sheet/
