@@ -1,0 +1,6 @@
+
+Download requests module from https://pypi.python.org/pypi/requests-2.18.4
+
+
+Goto requests folder and run C:\Users\...\requests-2.18.4>python setup.py install
+
