@@ -2,4 +2,7 @@ In Linux Machine
 ================
 cd /usr/local/src/
 wget http://www.noip.com/client/linux/noip-duc-linux.tar.gz
+or
+curl -O http://www.noip.com/client/linux/noip-duc-linux.tar.gz
+
 
