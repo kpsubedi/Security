@@ -5,3 +5,9 @@ https://attack.mitre.org/wiki/Privilege_Escalation
 Demo Application
 
 https://www.exploit-db.com/exploits/24872/
+
+Install the application
+- notice service created by application is ScsiAccess 
+- Find the path of ScsiAccess service executable
+- Check the permission of the executable 
+
