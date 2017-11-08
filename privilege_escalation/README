@@ -11,3 +11,7 @@ Install the application
 - Find the path of ScsiAccess service executable
 - Check the permission of the executable 
 
+
+Windows service control manager should able to communicate to the service
+
+http://code.activestate.com/recipes/551780/
