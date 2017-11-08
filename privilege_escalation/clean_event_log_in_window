@@ -1,0 +1,10 @@
+Start -> Event Viewer
+Run as Administrator
+
+Event Viewer
+    Windows Logs
+      Security
+      Application
+      
+      Right click in Security and Clear Log
+      Same for Application as well
