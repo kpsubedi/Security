@@ -33,3 +33,21 @@ class Service(win32serviceutil.ServiceFramework):
         self.runflag=True
         
         
+        
+        
+        while self.runflag:
+            self.sleep(10)
+            
+    def stop(self):
+        self.runflag=False
+        
+        
+if __name__=='__main__':
+    servicemanager.Initialize()
+    servicemanager.PrepareToHostSingle(Service)
+    servicemanager.StartServiceCtrlDispatcher()
+    win32serviceutil.HandleCommandLine(Service)
+    
+    
+        
+        
