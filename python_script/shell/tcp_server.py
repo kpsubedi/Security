@@ -2,6 +2,16 @@ Goal:
 ====
 1. Custom reverse shell using python
 
+Replication Steps:
+==================
+Prerequisites:
+    Install Python in both client and server
+
+Run SERVER code first 
+Note: Server IP and Listening port, use netstat command make sure server is running and listening 
+
+Run Client code and you should see Shell# in server (in our case this is attacker) and you can run command 
+in client (in our case target).
 
 Server Script:
 ==============
