@@ -6,6 +6,7 @@ Replication Steps:
 ==================
 Prerequisites:
     Install Python in both client and server
+    Client and server able to communication using TCP/IP 
 
 Run SERVER code first 
 Note: Server IP and Listening port, use netstat command make sure server is running and listening 
