@@ -16,3 +16,20 @@ class Service(win32serviceutil.ServiceFramework):
     def sleep(self, sec):
         win32api.Sleep(sec*1000, True)
         
+    def SvcDoRun(self):
+        self.ReportSeriveStatus(win32service.SERVICE_START_PENDING)
+        try:
+            self.ReportServiceStatus(win32service.SERVICE_RUNNING)
+            self.start()
+        except Exception, x:
+            self.SvcStop()
+            
+    def SvcStop(self):
+        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
+        self.stop()
+        self.ReportServiceStatus(win32service.SERVICE_STOPED)
+        
+    def start(self):
+        self.runflag=True
+        
+        
