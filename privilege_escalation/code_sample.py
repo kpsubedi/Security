@@ -32,6 +32,15 @@ class Service(win32serviceutil.ServiceFramework):
     def start(self):
         self.runflag=True
         
+        '''
+        fd = open('C:/Users/normaluser/Desktop/priv_test.txt', 'w')
+        if ctypes.windll.shell32.IsUserAnAdmin() == 0P
+            fd.write('[-] this is not admin user!')
+        else:
+            fd.write('[+] Admin user!')
+        fd.close()    
+        '''
+        
         
         
         
