@@ -2,3 +2,36 @@ Wireshark Filter:
 
 icmp && (eth.src == 00:0a:39:7f:37:ff || eth.dst == 00:0a:39:7f:37:ff)
 
+Select eth0 and start sniffing
+
+Switch to Victim Machine
+
+C:\Users\....>ping GateWay_IP
+
+
+# ettercap -G
+
+Sniff -> Unifed Sniffing
+
+Hosts -> Scan for Hosts
+Hosts -> Host lists
+
+Select target system and Add to Target 1
+Select GateWay Address and Add to Target 2
+
+Mitm -> Arp poisoning
+
+Click Ok to start poisoining
+
+Start -> Start sniffing
+
+Switch back to Victim machine and ping GateWay_IP
+
+Switch to Kali System and see the wireshark.
+
+The traffic being routed through our local interface.
+
+
+
+
+
