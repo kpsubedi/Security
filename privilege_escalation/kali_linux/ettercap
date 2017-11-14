@@ -1,0 +1,4 @@
+Wireshark Filter:
+
+icmp && (eth.src == 00:0a:39:7f:37:ff || eth.dst == 00:0a:39:7f:37:ff)
+
