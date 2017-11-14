@@ -57,8 +57,8 @@ Notice "bytes from" in ping response.
 
 # ping -c 1 192.168.10.200 | grep "bytes from"
 
-# ping ping -c 1 192.168.10.20 | grep "bytes from" | cut -d " " -f4
-# ping ping -c 1 192.168.10.20 | grep "bytes from" | cut -d " " -f4 | cut -d":" -f1
+# ping -c 1 192.168.10.20 | grep "bytes from" | cut -d " " -f4
+# ping -c 1 192.168.10.20 | grep "bytes from" | cut -d " " -f4 | cut -d":" -f1
 
 #!/bin/bash
 
