@@ -32,6 +32,16 @@ Switch to Kali System and see the wireshark.
 The traffic being routed through our local interface.
 
 
+By doing MitM we are able to locate password hashes in network traffic.
+
+* Find out the hash type
+# hash-identifier 
+
+Enter the sample hash value
+
+Press CTRL + C to exit
+
+
 
 
 
