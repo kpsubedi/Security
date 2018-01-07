@@ -6,3 +6,7 @@ demo.txt demo.asp;.txt
 Rejetto HTTP File Server
 ========================
 https://www.exploit-db.com/exploits/39161/
+
+========WINDOWS==========
+ftp> ls ../../../../Docume~1/
+
