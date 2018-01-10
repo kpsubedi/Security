@@ -10,3 +10,5 @@ https://www.adampalmer.me/iodigitalsec/2013/08/10/accessing-and-hacking-mssql-fr
 
 http://www.whitelist1.com/2016/11/xstack-overflow-3-exploiting-minishare.html
 https://web.archive.org/web/20110208085632/http://www.trevorpounds.com/blog/: gcc
+
+gcc -m32 -wl,--hash-style=both -o exploit exploit.c
