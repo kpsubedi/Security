@@ -12,3 +12,6 @@ http://www.whitelist1.com/2016/11/xstack-overflow-3-exploiting-minishare.html
 https://web.archive.org/web/20110208085632/http://www.trevorpounds.com/blog/: gcc
 
 gcc -m32 -wl,--hash-style=both -o exploit exploit.c
+
+
+https://www.toshellandback.com/2015/11/24/ms-priv-esc/
