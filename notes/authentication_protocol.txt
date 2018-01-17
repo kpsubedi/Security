@@ -1,6 +1,7 @@
 Kerberos
 ========
-
+Introduction
+************
 - A system of authentication developed at MIT as part of the Athena project.
 - It uses encryption technology and a trusted third party, an arbitrator, to perform 
   secure authentication on an open network.
@@ -8,4 +9,18 @@ Kerberos
   over the wire. It was based upon the Needham-Schroeder protocol.
   
   
-  
+Kerberos Versions
+*****************
+- Currently used versions are 4 and 5. 
+- versions 1 through 3 were internal development versions and never released.
+- version 4 has a number of known weaknesses and should no longer to be used.
+- RFC1510
+
+
+The Benefits of Kerberos
+************************
+
+
+References
+==========
+http://tldp.org/HOWTO/pdf/Kerberos-Infrastructure-HOWTO.pdf
