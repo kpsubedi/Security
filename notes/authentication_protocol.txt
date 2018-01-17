@@ -35,7 +35,21 @@ How Kerberos Works?
   the Kerberos daemons.
 - The shared secret is the users password transformed into a cryptographic key. In the case of servers 
   or software systems, a random key is generated.
--   
+- In Kerberos, users are known as principals. The KDC has a database of principals and their secret keys
+  which is uses to perform authentication. 
+- In Kerberos knowledge of the secret key is considered sufficient for proof of identity.
+- The KDC runs two important Kerberos daemons. These daemons are kadmind and krb5kdc. 
+- While GNU/Linux daemon naming conventions suggests that processes which have names starting with "k" are
+  Kernel related or Kernel space processes, this is not true in the case of krb5kdc and kadmind. These
+  two daemons are run as root in user space.
+  
+kadmind
+*******
+- Administrative daemon for the Kerberos server. 
+- kadmind is used by a program named kadmin to maintain the database of principles and policy configuration.
+- If you choose to disallow any remote logins vis ssh on your Kerberos hardware, kadmin will allow you to 
+  remotely administer the Kerberos components of the server.
+  
   
 References
 ==========
