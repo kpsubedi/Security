@@ -50,6 +50,12 @@ kadmind
 - If you choose to disallow any remote logins vis ssh on your Kerberos hardware, kadmin will allow you to 
   remotely administer the Kerberos components of the server.
   
+krb5kdc
+*******
+- Workhorse of the Kerberos server. 
+- It is responsible for performing the role of the trusted third party arbitrator in Kerberos authentication.
+- 
+  
   
 References
 ==========
