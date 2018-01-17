@@ -19,8 +19,24 @@ Kerberos Versions
 
 The Benefits of Kerberos
 ************************
+- For individuals unfamiliar with the Kerberos protocol, the benefits of deploying it in their 
+  network may not be clear.
+- However, all admins are familiar with the problems Kerberos was designed to mitigate. Those 
+  problems include, password sniffing, password filename/database stealing, and the high level 
+  of effort necessary to maintain a large number of account databases.
+- 
 
-
+How Kerberos Works?
+*******************
+- Authentication protocol which uses a shared secret and a trusted third party arbitrator 
+  in order to validate the identity of clients.
+- In Kerberos, clients may be users, servers, or pieces of software. 
+- The trusted third party arbitrator is a server known as a Key Distribution Center (KDC) which runs 
+  the Kerberos daemons.
+- The shared secret is the users password transformed into a cryptographic key. In the case of servers 
+  or software systems, a random key is generated.
+-   
+  
 References
 ==========
 http://tldp.org/HOWTO/pdf/Kerberos-Infrastructure-HOWTO.pdf
