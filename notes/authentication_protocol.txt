@@ -1,2 +1,11 @@
 Kerberos
 ========
+
+- A system of authentication developed at MIT as part of the Athena project.
+- It uses encryption technology and a trusted third party, an arbitrator, to perform 
+  secure authentication on an open network.
+- It uses cryptographic tickets in order to avoid transmitting plain text passwords 
+  over the wire. It was based upon the Needham-Schroeder protocol.
+  
+  
+  
