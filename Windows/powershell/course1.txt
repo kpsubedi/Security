@@ -26,3 +26,17 @@ ping 192.168.45.101 -n 1
 Netsh - short for NetShell 
 int = short for interface
 ip - that's the internet protocol
+
+There three commands follow it's own convention. 
+
+PowerShell cmdlet structure
+---------------------------
+All PowerShell comdlets have a structure. Two words: The first one's like a verb, and noun.
+
+The verbs come from a very small number of approved verbs, approved by the PowerShell Group. 
+They get to control that stuff. They don't controll all the cmdlets, cmdlets can be written by 
+anyone, 
+All 
+new, get, connect, set, remove = are verbs
+
+The nouns, the second part, coem from the Product Group that creates them. 
