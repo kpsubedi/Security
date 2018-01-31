@@ -72,8 +72,9 @@ Hyper-V 2008 and 2008 R2
 
 See them all with a cmdlet "get-verb"
 
-
- 
- 
- 
-  
+Reusable Information
+--------------------
+- To rename a virtual machine from "WEBVM" to "VM1".
+   rename-vm -name "WebVM" -newname "VM1"
+   
+   
