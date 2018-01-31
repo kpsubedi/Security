@@ -1,0 +1,31 @@
+Are there multiple networks?
+
+ipconfig /all
+
+Get-NetIPConfiguration | ft InterfaceAlias, InterfaceDescription,IPv4Address
+
+What routes do we have?
+
+route print 
+
+Arything in the ARP cache?
+arp -a
+
+Are there connections to other hosts?
+
+netstat -ano
+
+Anything in the hosts file?
+C:\WINDOWS\System32\drivers\etc\hosts
+
+Is the firewall turned on? If so what's configured?
+netsh firewall show state
+netsh firewall show config
+netsh advfirewall firewall show rule name=all
+netsh advfirewall export "firewall.txt"
+
+Are other interesting interface configurations?
+netsh dump
+
+Are there any SNMP configurations?
+reg query HKLM\SYSTEM\CurrentControlSet\Services\SNMP /s
