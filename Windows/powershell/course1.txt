@@ -17,3 +17,8 @@ What I didnot like is that Office 365 creates a little Active Directory. It's no
 
 Command line gives you a broader range of power.
 
+Set Static IP in Windows
+=========================
+netsh int ip set dns name="Ethernet" addr=192.168.45.101
+ipconfig /all
+ping 192.168.45.101 -n 1
