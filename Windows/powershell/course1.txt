@@ -1,3 +1,19 @@
 
-"Windows Server 2008 file migration tool"
+Google "Windows Server 2008 file migration tool"
+
+File Server Migration Tools Only Available in Power Shell.
+
+How to get some thing from Active Directory?
+
+Get all disabled users.
+See the ocked-out accounts.
+We can see using GUI. But can we see the inactive users? Can we see the ones that haven't logged on in 60 days?
+
+We can only see using PowerShell.
+
+Office 365
+==========
+What I didnot like is that Office 365 creates a little Active Directory. It's not really an Active Directory, it's actually ADAM, you know AD LDS. And one of the things that it has hard wired is that I've got to change my password every 15 minutes or something, and this is annoying because that means my IPaD can't get to my email, my IPhone can't, my comuter can't, things start complaining, and it just, I'm like, okay, I get that we should change passwords, but let me do ot once a year because, wait for it, it's my data, I get to say. 
+
+Command line gives you a broader range of power.
 
