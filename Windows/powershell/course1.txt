@@ -60,3 +60,10 @@ no cmdlet starts with "create-", it is always new - new-vm creates a VM
 Hyper-V 2008 and 2008 R2
 
 - get is like "show" or "list"
+  get-vm would show all virtual machines on a Hyper-V server, 
+  
+- set lets you change some attributes
+ set-vm would let you rename it, change how much RAM it has, etc.
+ 
+ 
+  
