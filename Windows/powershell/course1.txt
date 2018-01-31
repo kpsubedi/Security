@@ -22,3 +22,7 @@ Set Static IP in Windows
 netsh int ip set dns name="Ethernet" addr=192.168.45.101
 ipconfig /all
 ping 192.168.45.101 -n 1
+
+Netsh - short for NetShell 
+int = short for interface
+ip - that's the internet protocol
