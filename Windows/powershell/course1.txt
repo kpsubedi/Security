@@ -36,7 +36,18 @@ All PowerShell comdlets have a structure. Two words: The first one's like a verb
 The verbs come from a very small number of approved verbs, approved by the PowerShell Group. 
 They get to control that stuff. They don't controll all the cmdlets, cmdlets can be written by 
 anyone, 
-All 
+All PowerShell cmdlets have names like verb-noun
+------------------------------------------------
 new, get, connect, set, remove = are verbs
+
+The nouns come from the product group that controls whatever you're trying to administer
+----------------------------------------------------------------------------------------
+Process, Service, ADUser, VM, Computer
+
+The nouns are always singular
+-----------------------------
+get-vm, restore-aduser, format-table
+
+
 
 The nouns, the second part, coem from the Product Group that creates them. 
