@@ -78,3 +78,7 @@ Reusable Information
    rename-vm -name "WebVM" -newname "VM1"
    
    
+- To rename "PC24" to "ACCOUNTINGPC",
+   rename-computer -name "PC24" -newname "AccountingPC"
+   
+   
