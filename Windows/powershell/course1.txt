@@ -51,3 +51,12 @@ get-vm, restore-aduser, format-table
 
 
 The nouns, the second part, coem from the Product Group that creates them. 
+
+The Four Big PowerShell (POSH) verbs
+------------------------------------
+- new (Create Something New)
+no cmdlet starts with "create-", it is always new - new-vm creates a VM
+
+Hyper-V 2008 and 2008 R2
+
+- get is like "show" or "list"
