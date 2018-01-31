@@ -65,5 +65,15 @@ Hyper-V 2008 and 2008 R2
 - set lets you change some attributes
  set-vm would let you rename it, change how much RAM it has, etc.
  
+- remove means "delete"
+ remove-vm would delete a virtual machine
+ 
+- add, clear, test, measure, rename
+
+See them all with a cmdlet "get-verb"
+
+
+ 
+ 
  
   
