@@ -81,4 +81,13 @@ Reusable Information
 - To rename "PC24" to "ACCOUNTINGPC",
    rename-computer -name "PC24" -newname "AccountingPC"
    
-   
+  
+PowerShell has options to shorten them
+--------------------------------------
+- Shorter "alias" versions of commands:
+  "import-module" becomes "ipmo"
+  
+  Dynamic Access Control whihc is a cool new feature of 2012 and 2012 RF2. 
+  It greatly extends your ability to control your file servers, but it has this one command you've got to type 
+  every time you change anything, and i'm not even going to do it right, it's something like, 
+  
