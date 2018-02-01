@@ -1,0 +1,4 @@
+ Install netcat in CentOS
+ 
+ yum install nc.x86_64
+ 
