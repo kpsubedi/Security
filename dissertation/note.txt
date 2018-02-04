@@ -1,0 +1,2 @@
+Cryptoware refers to the fact that structured malware attacks can encrypt and decrypt and move laterally within systems 
+and networks in a polymorphic fashion to evade AV and anti-malware utilities.
