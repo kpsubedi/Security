@@ -1,5 +1,8 @@
 Ransomware Detection and Recovery Framework
 
+A Framework to Defend and to recover data from Crypto-Ransomware
+
+
 Cryptoware refers to the fact that structured malware attacks can encrypt and decrypt and move laterally within systems 
 and networks in a polymorphic fashion to evade AV and anti-malware utilities.
 
@@ -11,4 +14,25 @@ Defending a Ransomware Attack
 ==============================
 1. Backup regularly and test backups
 2. Disable Office macros by default 
-3. 
+3. Use firewalls to block C&C call-backs
+4. Scan all email for malicious content
+5. Segregate networks where possible
+6. Use anti-virus/anti-malware protection
+7. No Administrator rights by default
+8. Enforce access control permissions.
+
+
+
+Module
+------
+- Key ransomware entry points
+- How to defend your network
+- How to identify and contain 
+
+
+Police department loses years worth of evidence in Ransomware incident.
+In February 2016 we heard that a hospital in Los Angeles that had to pay $17,000 ransom to get their data back.
+
+Uber pay ransom to hacker 
+
+Ransomware is really prevalent and a substantial threat for all sorts of people and organizations. 
