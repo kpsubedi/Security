@@ -12,4 +12,17 @@ Mandatory arguments to long options are mandatory for short options too.
                                `--block-size=M' prints sizes in units of
                                1,048,576 bytes.  See SIZE format below.
                                
-                               
+ asd
+asdf
+
+Let's say that vulnerable target is behind a Web Application Firewall (WAF), and this WAF has a rule that 
+blocks all requests containing /etc/passwd or /bin/ls inside the value of a GET parameter or inside the body 
+in a POST request. 
+/?parm1=cat+/etc/passwd: it will be blocked by the target WAF and your IP will be banned forever and tagged. 
+
+
+
+
+
+
+ 
