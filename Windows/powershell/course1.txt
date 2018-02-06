@@ -110,6 +110,30 @@ Remote Control is Pretty Good
    -scriptblock {disable-windowsoptionalfeature -feature WindowsMediaPlayer}   
    
    
+   PowerShell does this really awesome , what rolls through that pipeline is not text, it's objects.
+   Why does that matter? It means we never have to parse. 
+   Objects are blobs of data that explain themselves. So instead of being the receiving application with this big pile
+   of text and you're just praying to God that it's all formatted the way that you expect, 
+   
+   
+   Let's say I want to delete all disabled accounts
+   
+   Get all AD users ==> get-aduser
+   Extract only the disabled ones (where-object)
+   Delete those accoutns (remove-aduser)
+   
+   
+   If using 2008 R2, deleted objects go to a recycle bin.
+   
+   Interface to access Active Directory is ADSI, Active Directory Scripting Interface or may be a little bit of WMI, Windows 
+   Management Instrumentation. 
+   
+   * This "one-liner" disables all accounts that have not logged on in 90 days:
+   
+   search-adaccount -datetime "01/03/2015" -usersonly | disable-adaccount
+   
+   * Powershell makes testing a "one-liner" easy by including "-whatif" in the "DANGEROUS" cmdlets, like this:
+   search-adaccount -accountinactive -datetime "01/03/2015" -usersonly | disable=adaccount -whatif
    
    
    
