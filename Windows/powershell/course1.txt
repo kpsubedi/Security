@@ -98,4 +98,18 @@ Discovering Commands: Get-Command
 - Use Get-Command
    Get-Command *printer*
    Gcm *printer*
-- 
+   
+   
+Remote Control is Pretty Good
+-----------------------------
+1. invoke-command -computername PC10, PC12, PC20 
+   -scriptblock {disable-windowsoptionalfeature -feature WindowsMediaPlayer}
+2. invoke-command -computername (type C:\pcs.txt)
+   -scriptblock {disable-windowsoptionalfeature -feature WindowsMediaPlayer}
+3. invoke-command -computername (get-adcomputer -filter *).name 
+   -scriptblock {disable-windowsoptionalfeature -feature WindowsMediaPlayer}   
+   
+   
+   
+   
+   
