@@ -91,3 +91,11 @@ PowerShell has options to shorten them
   It greatly extends your ability to control your file servers, but it has this one command you've got to type 
   every time you change anything, and i'm not even going to do it right, it's something like, 
   
+
+Discovering Commands: Get-Command
+==================================
+- How to find out if any cmdlets control printers?
+- Use Get-Command
+   Get-Command *printer*
+   Gcm *printer*
+- 
