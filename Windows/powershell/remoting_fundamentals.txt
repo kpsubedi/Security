@@ -3,3 +3,8 @@ SSL remoting
 Implicit remoting 
 Disconnected sessions
 
+What This Is All About
+======================
+
+PowerShell is *the* management engine for Windows
+
