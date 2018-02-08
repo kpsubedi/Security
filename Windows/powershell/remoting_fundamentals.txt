@@ -7,4 +7,14 @@ What This Is All About
 ======================
 
 PowerShell is *the* management engine for Windows
+PowerShell scales because of remoting features
+with PowerShell remoting, We can very easily scale out a command and connect to 1 machine, 20 machines.
 
+Learn to use PowerShell remoting to become more effective.
+
+Lay the groundwork for advanced scenarios like JEA or PowerShell Web Access.
+
+PowerShell 4.0
+You need a domain environment, which means you'll need at least one domain controller, preferably something running 
+2008 R2 or later. 
+You will need a desktop, a client to run these commands from.
