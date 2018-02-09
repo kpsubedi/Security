@@ -40,3 +40,10 @@ $ cat auth.log
 audit.log 
 
 
+Cryptographic Hash
+==================
+# touch sample.data
+# echo "Thsi is test" > sample.data
+# md5sum sample.data
+
+
