@@ -119,3 +119,12 @@ paste the key
 # cat alerts.log
 
 
+# apt-cache search samhain 
+
+- Date integrity and host intrusion alert system
+Install
+# apt-get install samhain
+
+# cd /etc/samhain
+# vi samhainrc
+
