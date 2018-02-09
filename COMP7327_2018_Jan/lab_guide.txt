@@ -2,3 +2,37 @@
  
  yum install nc.x86_64
  
+
+
+Intrusion Detection System
+==========================
+log file location.
+$ cd /var/log/
+
+$ cd /etc
+$ less rsyslog.conf
+
+$ grep rsyslog.d rsyslog.conf
+
+$ cd /etc/rsyslog.d/
+$ ls
+
+$ cd /var/log
+$ sudo less syslog
+
+$ cat kern.log 
+$ cat auth.log 
+
+# cd /etc/audit
+
+# apt-cache search auditd
+# vi audit.rules
+
+-b 4096 
+
+
+-w /etc/shadow -p wa -k usermods
+-a always,exit -S clock_settime -k timechange
+
+# service auditd start
+
