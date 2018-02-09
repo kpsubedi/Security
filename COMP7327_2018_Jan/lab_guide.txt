@@ -36,3 +36,7 @@ $ cat auth.log
 
 # service auditd start
 
+# ls /var/log/audit 
+audit.log 
+
+
