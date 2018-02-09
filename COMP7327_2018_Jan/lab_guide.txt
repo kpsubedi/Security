@@ -47,3 +47,37 @@ Cryptographic Hash
 # md5sum sample.data
 
 
+Hash Collision
+---------------
+- Get same hash value of the two different content
+
+
+TripWire is the Host-Based IDS
+------------------------------
+- uses cryptographic hashes 
+# apt-get install tripwire
+
+After installation 
+# cd /etc/tripwire
+# less twcfg.txt
+# less twpol.txt
+
+Lets create a configuration file
+# ls
+# twadmin --create-cfgfile --cfgfile tw.cfg.enc --site-keyfile site.key twcfg.txt
+
+Create a policy file
+# twadmin --create-polfile --cfgfile tw.cfg.enc --polfile tw.pol.enc --site-keyfile site.key twpol.txt
+
+Initialize the database
+# tripwire --init --cfgfile tw.cfg.enc --polfile tw.pol.enc --site-keyfile site.key --local-keyfile comp7327-local.key
+
+Look at the policy file and generate a database file
+/var/lib/tripwire
+
+
+Check all of our file against database
+
+# tripwire --check 
+
+Update the database if you change one of these ciritical files. 
