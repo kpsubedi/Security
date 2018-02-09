@@ -84,4 +84,13 @@ Update the database if you change one of these ciritical files.
 
 OSSEC (https://ossec.github.io/)
 ---------------------------------
+- rootkit checking 
+- process monitoring 
+
+Download (https://ossec.github.io/downloads.html)
+
+Download the source and build and install.
+
+Server runs on UNIX and agent can run on Windows.
+
 
