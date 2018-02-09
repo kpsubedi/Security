@@ -1,8 +1,22 @@
 
 secpol.msc
+Event Viewer
+------------
+Computer Management (Local)
+- System Tools
+ - Task Scheduler 
+ - Event Viewer
+ - Shared Folders
+ - Local Users and Groups
+ - Performance
+ Device Manager
+ 
+- Storage
+- Services and Applications
+
+
 
 - Open Local Security Policy 
-
 - Local Policies
  -- Audit Policy
  -- User Rights Assignment 
