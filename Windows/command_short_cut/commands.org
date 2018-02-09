@@ -1,7 +1,6 @@
 
 secpol.msc
-Event Viewer
-------------
+
 Computer Management (Local)
 - System Tools
  - Task Scheduler 
@@ -13,6 +12,13 @@ Computer Management (Local)
  
 - Storage
 - Services and Applications
+
+Event Viewer
+============
+All of the log files of the system 
+- Custom Views
+- Windows Logs
+- Applications and Services Logs
 
 
 
