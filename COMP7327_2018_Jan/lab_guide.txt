@@ -93,4 +93,11 @@ Download the source and build and install.
 
 Server runs on UNIX and agent can run on Windows.
 
+Installation
+------------
+# tar xvf ossec-hids-2.9.3.tar.gz
+# cd ossec-hids-2.9.3
+# less INSTALL
+# ./install.sh
+
 
