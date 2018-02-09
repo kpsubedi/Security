@@ -81,3 +81,7 @@ Check all of our file against database
 # tripwire --check 
 
 Update the database if you change one of these ciritical files. 
+
+OSSEC (https://ossec.github.io/)
+---------------------------------
+
