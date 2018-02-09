@@ -3,10 +3,10 @@ secpol.msc
 
 - Open Local Security Policy 
 
-1. Local Policies
- 1.1 Audit Policy
- 1.2 User Rights Assignment 
- 1.3 Security Options
+- Local Policies
+ -- Audit Policy
+ -- User Rights Assignment 
+ -- Security Options
  
 
 
