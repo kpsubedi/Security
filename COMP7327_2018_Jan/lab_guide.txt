@@ -4,8 +4,11 @@
  
 
 
-Intrusion Detection System
-==========================
+Intrusion Detection System (HOST-BASED)
+=======================================
+- based on file integrity check
+- Email as alerting mechanism
+
 log file location.
 $ cd /var/log/
 
@@ -119,6 +122,8 @@ paste the key
 # cat alerts.log
 
 
+SAMHAIN
+=======
 # apt-cache search samhain 
 
 - Date integrity and host intrusion alert system
