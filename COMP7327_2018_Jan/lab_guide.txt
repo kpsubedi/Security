@@ -133,4 +133,7 @@ Install
 # cd /etc/samhain
 # vi samhainrc
 
+Initialize the database for SAMHAIN
+# samhain -t init -p info
+
 
