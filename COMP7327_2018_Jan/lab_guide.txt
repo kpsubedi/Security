@@ -165,3 +165,21 @@ Typically stored in system
 
 Send message to centralized log server.
 # vi /etc/rsyslog.conf 
+
+UDP syslog reception
+---------------------
+module(load="imudp")
+input(type="imudp" port="514")
+
+# cd /etc/rsyslog.d/
+# ls
+
+# vi 50-default.conf
+
+*.*    @@remote-syslog.mydomain.com:514
+
+*.*    @@192.168.56.105:514
+Every message in this particular host to 192.168.56.105:514.
+
+
+
