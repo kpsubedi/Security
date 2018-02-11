@@ -198,3 +198,10 @@ Run the logwatch
 
 Network-Based Intrusion-Detection System
 ========================================
+When we are talking about Network-Based IDS, a piece of software going to be monitoring all of the activities run across 
+a particular network interface. 
+
+Online and Offline network capture
+==================================
+- Most of the IDSs do online network capture
+# tcpdump -s 0 -w sample.pcap
