@@ -193,6 +193,6 @@ Default settings are in:
 # cd default.conf 
 # man logwatch
 
-
-
+Run the logwatch
+# logwatch
 
