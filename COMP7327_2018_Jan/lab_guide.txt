@@ -136,4 +136,32 @@ Install
 Initialize the database for SAMHAIN
 # samhain -t init -p info
 
+# vi /etc/samhain/samhainrc
 
+Look for the TrustedUser
+Add the below line:
+
+TrustedUser = 104
+
+# samhain -t update
+
+Run samhain
+-----------
+# samhain -t check 
+
+# cd /var/log/samhain
+# ls 
+
+# less samhain-init.log
+
+Look fro ERROR MESSAGE, CRITICAL 
+================================
+# less samhain.log 
+
+Log File
+--------
+Typically stored in system 
+/var/log 
+
+Send message to centralized log server.
+# vi /etc/rsyslog.conf 
