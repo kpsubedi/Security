@@ -204,4 +204,6 @@ a particular network interface.
 Online and Offline network capture
 ==================================
 - Most of the IDSs do online network capture
+
 # tcpdump -s 0 -w sample.pcap
+
