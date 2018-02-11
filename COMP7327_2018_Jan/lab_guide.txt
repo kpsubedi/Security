@@ -181,5 +181,18 @@ input(type="imudp" port="514")
 *.*    @@192.168.56.105:514
 Every message in this particular host to 192.168.56.105:514.
 
+# apt-get install logwatch
+Log Watch is going to read through all of the log files and generate a summary for you.
+# cd /etc/logwatch
+# ls
+
+Default settings are in:
+
+# cd /usr/share/logwatch
+
+# cd default.conf 
+# man logwatch
+
+
 
 
