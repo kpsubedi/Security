@@ -302,4 +302,17 @@ output:
    - fast:
         enabled: yes
         
-        
+# cat /etc/default/suricata
+
+RUN=no
+# /etc/init.d/suricata start
+
+# vi /etc/default/suricata
+
+RUN=yes
+
+IFACE=eth0
+
+# man suricata
+
+
