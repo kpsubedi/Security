@@ -205,7 +205,7 @@ Run the logwatch
 
 Network-Based Intrusion-Detection System
 ========================================
-When we are talking about Network-Based IDS, a piece of software going to be monitoring all of the activities run across 
+When we are talking about Network-Based IDS, a piece of software going to be monitoring all of the activities that run across 
 a particular network interface. 
 
 Online and Offline network capture
@@ -213,4 +213,77 @@ Online and Offline network capture
 - Most of the IDSs do online network capture
 
 # tcpdump -s 0 -w sample.pcap
+
+-s 0: snap length zero means grab the entire packet
+-w <file_name>: write to file 
+
+www.snort.org
+=============
+- Open Source 
+- runs on Windows and Linux
+- Software 
+- Set of rules 
+- signature based IDS
+
+Rule Manager (Oinkmaster)
+------------
+- Update rules automatically
+
+# apt-get install snort
+
+Ask for Interface(s) which Snort should listen on:
+# ifconfig => to verify the interface name.
+
+Address range for the local network:
+192.168.0.0/24 
+
+Snort Configuration
+-------------------
+# /etc/snort
+# ls
+
+We are looking for conf file. There are 
+# less /etc/default/snort
+# less /etc/init.d/snort => which is system start up script.
+
+look for CONFIG=/etc/snort/snort.debian.conf.
+
+# less snort.debian.conf 
+Which contains home network, interface name etc
+# less snort.conf => to take a reference for entire set of configuration settings. 
+
+Run
+---
+# snort 
+
+# snort -c /etc/snort/snort.conf
+
+Reading Pcap file
+-----------------
+# snort -c /etc/snort/snort.conf -r snort-test.pcap
+
+Running in Daemon mode
+----------------------
+# /etc/init.d/snort start
+
+Rules
+-----
+# cd /etc/snort/rules
+# ls
+
+# less community-web-attacks.rules
+
+alert tcp $EXTERNAL_NET any -> $HTTP_SERVERS $HTTP_PORTS (msg:"COMMUNITY WEB-ATTACKS Hydra "; 
+
+$EXTERNAL_NET : except home network 
+any : any port 
+pcre: "/^User-Agent\s" => This is regular expression. => This is basically signature. 
+
+TFN
+tfn2k
+
+
+
+
+
 
