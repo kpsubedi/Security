@@ -315,4 +315,50 @@ IFACE=eth0
 
 # man suricata
 
+# ls /etc/init.d/
+
+# /etc/init.d/suricata start
+
+Rules
+-----
+# cd /etc/suricata/rules
+# ls
+
+# less app-layer-events.rules
+
+Bro
+---
+https://www.bro.org/
+- 
+Installation
+------------
+https://www.bro.org/sphinx/install/install.html#id2
+
+# cd /opt/bro
+# cd etc
+# ls
+
+# less node.cfg
+
+# vi node.cfg
+interfact=en0
+
+# vi networks.cfg
+
+Running Bro
+-----------
+# head broctl.cfg
+
+# cd /opt/bro/bin
+# ./broctl
+
+[BroControl] > install
+
+[BroControl] > start
+
+[BroControl] > quit
+
+# ps auxww | grep bro
+
+
 
