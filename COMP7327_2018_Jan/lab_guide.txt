@@ -113,10 +113,17 @@ Install agent to talk to server
 
 Text based menu 
 
-We need to get the 
+We need to get the key (E)xtract key for an agent (E).
+
+Copy key and paste to the Windows client.
 
 Got to windows and install agent 
-paste the key 
+paste the key into OSSEC Agent Manager
+Server IP:
+Key:
+
+Start OSSEC
+
 
 # cd /var/ossec/logs/alerts
 # cat alerts.log
