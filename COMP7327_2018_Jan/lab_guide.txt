@@ -360,5 +360,61 @@ Running Bro
 
 # ps auxww | grep bro
 
+# cd /opt/bro/logs/current
+# ls
 
+# cd /opt/bro/share
+# cd bro
+# cd site
+# ls
+# less local.bro
+
+what should be loaded when Bro get started?
+# cd ..
+# cd policy
+# cd protocols
+# cd http
+# less detect-webapps.bro
+
+# cd /opt/bro/share/bro/policy/framework/
+# ls
+
+Updating Snort Rules Automatically
+----------------------------------
+# vi /etc/oinkmaster.conf
+
+Need Oinkcode and need to register to get the code.
+
+# man oinkmaster
+
+# oinkmaster -C /etc/oinkmaster.conf -o /etc/snort/rules
+
+Snort Log
+---------
+# cd /var/log/snort
+# ls
+
+# file snort.log
+
+We need a program that takes this binary file as input and generate the readable output file.
+
+# vi /usr/local/etc/barnyard2.conf
+
+config sid_file:  /etc/snort/community-sid-msg.map
+
+config interface: en0
+
+#
+# Step 2: setup the input plugins
+#
+
+input unified2
+
+#
+# Step 3: setup the output plugins
+#
+
+output alert_fast: stdout
+
+# barnyard2 -c /usr/local/etc/barnyard2.conf -d /var/log/snort
 
