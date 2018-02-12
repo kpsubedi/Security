@@ -282,8 +282,24 @@ pcre: "/^User-Agent\s" => This is regular expression. => This is basically signa
 TFN
 tfn2k
 
+Suricata
+--------
+https://suricata-ids.org/
 
+- uses a snort rule sets
+# apt-cache search suricata
+# apt-get install suricata
 
+# cd /etc/suricata
+# ls
 
+Default config file : suricata-debian.yaml
+# less suricata-debian.yaml
 
+- it uses multiple threads to handle traffic based on size
 
+output:
+   - fast:
+        enabled: yes
+        
+        
