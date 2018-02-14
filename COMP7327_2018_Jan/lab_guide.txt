@@ -426,3 +426,5 @@ output alert_fast: stdout
 
 # barnyard2 -c /usr/local/etc/barnyard2.conf -d /var/log/snort
 
+-----
+# zcat http.1*.gz | head
