@@ -360,6 +360,14 @@ Running Bro
 
 # ps auxww | grep bro
 
+-----
+[BroControl] > check
+- go through config to make sure it will run
+
+[BroControl] > status
+
+-----
+
 # cd /opt/bro/logs/current
 # ls
 
