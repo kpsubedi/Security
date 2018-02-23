@@ -1,0 +1,390 @@
+====
+test@test:~$ cat /proc/crypto 
+name         : crct10dif
+driver       : crct10dif-pclmul
+module       : crct10dif_pclmul
+priority     : 200
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 1
+digestsize   : 2
+
+name         : crc32
+driver       : crc32-pclmul
+module       : crc32_pclmul
+priority     : 200
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 1
+digestsize   : 4
+
+name         : ghash
+driver       : ghash-clmulni
+module       : ghash_clmulni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ahash
+async        : yes
+blocksize    : 16
+digestsize   : 16
+
+name         : __ghash
+driver       : __ghash-pclmulqdqni
+module       : ghash_clmulni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 16
+digestsize   : 16
+
+name         : xts(aes)
+driver       : xts-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 16
+min keysize  : 32
+max keysize  : 64
+ivsize       : 16
+geniv        : <default>
+
+name         : lrw(aes)
+driver       : lrw-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 16
+min keysize  : 32
+max keysize  : 48
+ivsize       : 16
+geniv        : <default>
+
+name         : __xts-aes-aesni
+driver       : __driver-xts-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : blkcipher
+blocksize    : 16
+min keysize  : 32
+max keysize  : 64
+ivsize       : 16
+geniv        : <default>
+
+name         : __lrw-aes-aesni
+driver       : __driver-lrw-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : blkcipher
+blocksize    : 16
+min keysize  : 32
+max keysize  : 48
+ivsize       : 16
+geniv        : <default>
+
+name         : pcbc(aes)
+driver       : pcbc-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+ivsize       : 16
+geniv        : <default>
+
+name         : rfc4106(gcm(aes))
+driver       : rfc4106-gcm-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : nivaead
+async        : yes
+blocksize    : 1
+ivsize       : 8
+maxauthsize  : 16
+geniv        : seqiv
+
+name         : __gcm-aes-aesni
+driver       : __driver-gcm-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : aead
+async        : no
+blocksize    : 1
+ivsize       : 0
+maxauthsize  : 0
+geniv        : <built-in>
+
+name         : ctr(aes)
+driver       : ctr-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 1
+min keysize  : 16
+max keysize  : 32
+ivsize       : 16
+geniv        : chainiv
+
+name         : __ctr-aes-aesni
+driver       : __driver-ctr-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : blkcipher
+blocksize    : 1
+min keysize  : 16
+max keysize  : 32
+ivsize       : 16
+geniv        : <default>
+
+name         : cbc(aes)
+driver       : cbc-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+ivsize       : 16
+geniv        : <default>
+
+name         : ecb(aes)
+driver       : ecb-aes-aesni
+module       : aesni_intel
+priority     : 400
+refcnt       : 1
+selftest     : passed
+type         : ablkcipher
+async        : yes
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+ivsize       : 0
+geniv        : <default>
+
+name         : __cbc-aes-aesni
+driver       : __driver-cbc-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : blkcipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+ivsize       : 0
+geniv        : <default>
+
+name         : __ecb-aes-aesni
+driver       : __driver-ecb-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : blkcipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+ivsize       : 0
+geniv        : <default>
+
+name         : __aes-aesni
+driver       : __driver-aes-aesni
+module       : aesni_intel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : cipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+
+name         : aes
+driver       : aes-aesni
+module       : aesni_intel
+priority     : 300
+refcnt       : 1
+selftest     : passed
+type         : cipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+
+name         : aes
+driver       : aes-asm
+module       : aes_x86_64
+priority     : 200
+refcnt       : 1
+selftest     : passed
+type         : cipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+
+name         : hmac(sha256)
+driver       : hmac(sha256-generic)
+module       : kernel
+priority     : 0
+refcnt       : 2
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 32
+
+name         : hmac(sha1)
+driver       : hmac(sha1-generic)
+module       : kernel
+priority     : 0
+refcnt       : 2
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 20
+
+name         : stdrng
+driver       : krng
+module       : kernel
+priority     : 200
+refcnt       : 1
+selftest     : passed
+type         : rng
+seedsize     : 0
+
+name         : lzo
+driver       : lzo-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : compression
+
+name         : crct10dif
+driver       : crct10dif-generic
+module       : kernel
+priority     : 100
+refcnt       : 2
+selftest     : passed
+type         : shash
+blocksize    : 1
+digestsize   : 2
+
+name         : crc32c
+driver       : crc32c-generic
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 1
+digestsize   : 4
+
+name         : aes
+driver       : aes-generic
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+type         : cipher
+blocksize    : 16
+min keysize  : 16
+max keysize  : 32
+
+name         : sha384
+driver       : sha384-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 128
+digestsize   : 48
+
+name         : sha512
+driver       : sha512-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 128
+digestsize   : 64
+
+name         : sha224
+driver       : sha224-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 28
+
+name         : sha256
+driver       : sha256-generic
+module       : kernel
+priority     : 0
+refcnt       : 3
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 32
+
+name         : sha1
+driver       : sha1-generic
+module       : kernel
+priority     : 0
+refcnt       : 6
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 20
+
+name         : md5
+driver       : md5-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+type         : shash
+blocksize    : 64
+digestsize   : 16
+
+name         : crc32c
+driver       : crc32c-intel
+module       : kernel
+priority     : 200
+refcnt       : 2
+selftest     : passed
+type         : shash
+blocksize    : 1
+digestsize   : 4
+
+======
