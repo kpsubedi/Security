@@ -36,3 +36,8 @@ In February 2016 we heard that a hospital in Los Angeles that had to pay $17,000
 Uber pay ransom to hacker 
 
 Ransomware is really prevalent and a substantial threat for all sorts of people and organizations. 
+
+
+Binary Analysis
+===============
+https://github.com/cmu-sei/pharos
