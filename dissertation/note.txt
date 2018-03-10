@@ -41,3 +41,10 @@ Ransomware is really prevalent and a substantial threat for all sorts of people 
 Binary Analysis
 ===============
 https://github.com/cmu-sei/pharos
+
+Forensic Analsyis
+=================
+https://null0x4d5a.blogspot.com/2017/05/memory-analsyis-of-wannacry-ransomware.html
+https://eforensicsmag.com/finding-advanced-malware-using-volatility/
+https://volatility-labs.blogspot.com/2012/09/movp-13-desktops-heaps-and-ransomware.html
+https://securityintelligence.com/zeus-analysis-memory-forensics-via-volatility/
