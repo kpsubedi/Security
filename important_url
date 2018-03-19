@@ -86,9 +86,6 @@ https://plus.google.com/events/c5m09sqo2rqskq3ddv7m3fniges: 9
 [XSS]
 http://phpsecurity.readthedocs.io/en/latest/Cross-Site-Scripting-(XSS).html
 
-[SQL Injection and Web Application Firewall(WAF)]
-https://www.youtube.com/watch?v=UDHEKOrp78g
-
 
 [Web Security]
 http://docs.spring.io/spring-security/site/docs/current/reference/html/headers.html
@@ -97,7 +94,7 @@ http://spring.io/blog/2014/01/21/webinar-replay-spring-security-3-2
 https://www.udemy.com/burp-suite/learn/v4/t/lecture/4170162
 https://www.owasp.org/index.php/OWASP_Juice_Shop_Project : Vulnerable Applications
 
-[SQL Injection]
+[SQL Injection and Web Application Firewall]
 https://www.youtube.com/watch?v=rdyQoUNeXSg&feature=relmfu
    | |
    | |
@@ -105,6 +102,9 @@ https://www.youtube.com/watch?v=rdyQoUNeXSg&feature=relmfu
  \    /
    \ /
 https://www.youtube.com/watch?v=qBVThFwdYTc
+https://www.youtube.com/user/j0emccray/videos
+https://www.youtube.com/watch?v=UDHEKOrp78g
+
 
 https://depthsecurity.com/blog/exploitation-xml-external-entity-xxe-injection
 http://pentestmonkey.net/blog/mssql-sql-injection-cheat-sheet/
