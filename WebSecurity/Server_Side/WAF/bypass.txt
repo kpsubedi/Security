@@ -3,6 +3,24 @@
 BASH standard wildcards => also known as globbing patterns.
 man 7 glob
 
+glob - globbing pathnames
+
+Long ago, in UNIX V6, there was a program /etc/glob that would expand wildcard patterns. Soon afterward this 
+became a shell built-in. These days there is also a library routine glob(3) that will perform this function for 
+a user program. 
+
+The rules are follows (POSIX.2, 3.13).
+Wildcard matching
+-----------------
+A string is a wildcard pattern if it contains one of the characters: '?', '*', or '['. 
+Globbing is the operation that expands a wildcard pattern into the list of pathnames matching 
+the pattern. 
+Matching is defined by:
+-----------------------
+1. A '?' (not between brackets) matches any single character. 
+2. A '*' (not between brackets) matches any string, including the empty string. 
+3. 
+
 Not everyone knows that there's lots of bash syntaxes that makes you able to execute system commands just using:
 question mark ?, the forward slash "/", numbers , and letters. 
 
