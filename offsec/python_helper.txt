@@ -1,0 +1,5 @@
+Python Script
+=============
+$python -c 'print "\x65\x66\x67\x68\x41\x42\x43\x44\x45"'
+
+
