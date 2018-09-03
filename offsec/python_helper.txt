@@ -2,4 +2,9 @@ Python Script
 =============
 $python -c 'print "\x65\x66\x67\x68\x41\x42\x43\x44\x45"'
 
+>>> import hashlib
+>>> m = hashlib.md5()
+>>> m.update("demo")
+>>> m.hexdigest()
+'fe01ce2a7fbac8fafaed7c982a04e229'
 
