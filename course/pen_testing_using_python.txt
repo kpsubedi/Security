@@ -1,2 +1,5 @@
 Python For Offensive PenTest: A Complete Practical Course
 =========================================================
+Python For Offensive PenTest: A Complete Practical Course
+Hussam Khrais
+
