@@ -1,0 +1,11 @@
+Enable SMB1 in Windows 7
+
+Run PS as Administrator 
+Query:
+------
+PS C:\>Get-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol"
+
+Enable:
+-------
+PS C:\>Enable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol-Client" -All
+
