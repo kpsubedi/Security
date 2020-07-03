@@ -1,3 +1,7 @@
+Win7 VM
+-------
+https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/
+
 Enable SMB1 in Windows 7
 
 Run PS as Administrator 
