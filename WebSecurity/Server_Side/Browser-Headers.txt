@@ -44,3 +44,15 @@ w6IYDpONFnJetkGCjQ3FwEbgwNyVcaMWelfnU8RxDHNVXA==
 bash-4.2$ openssl x509 -pubkey < test.crt | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
 lJFY2T3+FEzF1G3HpkjNAZPhjiHQT9f5mDuG6h+hSG8=
 bash-4.2$ 
+
+Using CSR
+============
+
+bash-4.2$ openssl req -newkey rsa:4096 -keyout PRIVATEKEY.key -out MYCSR.csr
+
+Generate Pin using CSR
+--------
+bash-4.2$ openssl req -pubkey < MYCSR.csr | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
+vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
+bash-4.2$
+
