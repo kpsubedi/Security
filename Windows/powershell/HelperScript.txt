@@ -1,0 +1,8 @@
+
+Base64 Encoding and Decoding 
+----------------------------
+PS C:\Users\3877898> $Text = 'This is a secret and should be hiden'
+PS C:\Users\3877898> $Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
+PS C:\Users\3877898> $EncodedText = [Convert]::ToBase64String($Bytes)
+PS C:\Users\3877898> $EncodedText
+
