@@ -1,0 +1,5 @@
+$openssl x509 -pubkey < tls.crt | openssl pky -pubin -outfrom der | openssl dgst -sha256 -binary | openssl base64
+
+
+Using csr to generate pin
+$openssl req -pubkey < demo.csr | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
