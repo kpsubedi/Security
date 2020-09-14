@@ -1,0 +1,12 @@
+$openssl x509 -pubkey < tls.crt | openssl pky -pubin -outfrom der | openssl dgst -sha256 -binary | openssl base64
+
+bash-4.2$ openssl x509 -pubkey < test.crt | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
+lJFY2T3+FEzF1G3HpkjNAZPhjiHQT9f5mDuG6h+hSG8=
+
+
+Using csr to generate pin
+$openssl req -pubkey < demo.csr | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
+
+bash-4.2$ openssl req -pubkey < MYCSR.csr | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
+vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
+bash-4.2$ 
