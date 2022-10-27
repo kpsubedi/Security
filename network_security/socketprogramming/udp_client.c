@@ -1,4 +1,3 @@
-
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -91,3 +90,9 @@ int main(int argc, char **argv) {
     exit(EXIT_SUCCESS);
 
 }
+
+/* 
+Compilation 
+$gcc udp_client.c -o udp_client
+$./udp_client <UDP_SERVER> <UDP_SERVER_PORT> A AA AAA AAAA AAAA
+*/
