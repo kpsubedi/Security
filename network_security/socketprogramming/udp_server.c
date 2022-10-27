@@ -79,3 +79,9 @@ int main(int argc, char **argv) {
         }
 
     }
+
+/* 
+Compilation 
+$gcc udp_server.c -o udp_server
+$./udp_server 9898
+*/
