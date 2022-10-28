@@ -66,3 +66,14 @@ int main() {
 
 return 0;
 }
+
+/* 
+Compilation
+$gcc tcp_server.c -o server
+$./server 
+
+You should see the tcp server is running on port 5432. 
+
+$netstat -antp 
+
+*/
