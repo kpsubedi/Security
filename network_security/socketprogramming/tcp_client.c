@@ -59,3 +59,9 @@ int main(int argc, char **argv) {
     }
 return 0;
 }
+/*
+Compilation 
+$gcc tcp_client.c -o tcp_client
+$./tcp_client <SERVER_IP>
+
+*/
