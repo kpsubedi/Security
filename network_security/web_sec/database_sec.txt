@@ -1,0 +1,20 @@
+MariaDB [mysql]> select user,host from mysql.user where 1='1something';
++------+-----------+
+| user | host      |
++------+-----------+
+| root | localhost |
++------+-----------+
+1 row in set, 1 warning (0.001 sec)
+
+MariaDB [mysql]> select user,host from mysql.user where 0='1something';
+Empty set, 1 warning (0.001 sec)
+
+MariaDB [mysql]> select user,host from mysql.user where 0='something';
++------+-----------+
+| user | host      |
++------+-----------+
+| root | localhost |
++------+-----------+
+1 row in set, 1 warning (0.000 sec)
+
+MariaDB [mysql]> 
