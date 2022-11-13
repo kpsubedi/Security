@@ -29,3 +29,9 @@ netsh dump
 
 Are there any SNMP configurations?
 reg query HKLM\SYSTEM\CurrentControlSet\Services\SNMP /s
+
+
+PowerShell
+==========
+
+PS C:\Users\IEUser> Get-NetIPAddress | Format-List -Property * | ft ProtocolIfType
