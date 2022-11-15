@@ -1,0 +1,15 @@
+Advanced C Tips and Techniques - Paul L. Anderson and Gail C. Anderson
+
+
+Chapter 2 : The Run Time Environment
+------------------------------------
+
+C provides features not found in other programming languages. When you declare variables, for example, you 
+- choose a name,
+- the class of variable (array, structure, union, etc.), and
+- a data type, as in most other languages. 
+
+C is special in that you tell the compiler WHERE to place a variable in the RUN TIME ENVIRONMENT. The compiler doesn't decide, you do. 
+This is a bonus, because it gives you more control of your executing program.
+
+The other side of the coin is that the programmer mush have a clear idea of what he or she intends to do. 
