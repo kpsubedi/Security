@@ -35,3 +35,8 @@ PowerShell
 ==========
 
 PS C:\Users\IEUser> Get-NetIPAddress | Format-List -Property * | ft ProtocolIfType
+
+PS C:\> Get-NetAdapter 
+PS C:\> Get-NetAdapter | Format-List -Property *
+PS C:\> Get-NetAdapter | ft Virtual 
+
