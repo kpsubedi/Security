@@ -57,8 +57,14 @@ vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
 bash-4.2$
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
-* Cross-Origin-Resource-Policy: This HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given 
-resource.
+* Cross-Origin-Resource-Policy (CORP): This HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given 
+resource. This header allows you to control the set of origins that are empowered to include a resource. It is a robust defense against attacks like 
+Spectre, as it allows browsers to block a given response before it enters an attacker's process.
+
+Syntax:
+
+Cross-Origin-Resource-Policy: same-site | same-origin | cross-origin
 
 
+https://web.dev/coop-coep/
 
