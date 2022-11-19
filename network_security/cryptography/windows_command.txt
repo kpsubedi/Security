@@ -1,0 +1,19 @@
+Hashing
+-------
+
+PS C:\Users\hacker> Get-FileHash C:\Windows\System32\drivers\etc\services
+
+Algorithm       Hash                                                                   Path
+---------       ----                                                                   ----
+SHA256          C1723F7F29B224C42F26452C3EFA8F80F6EE8500EE78513E0C0732BA55399F7D       C:\Windows\System32\drivers\etc\se...
+
+
+
+PS C:\Users\hacker> Get-FileHash C:\Windows\System32\drivers\etc\services -Algorithm sha512 | Format-List
+
+
+Algorithm : SHA512
+Hash      : 5BBEE0DFEE4D26F2690DC475A4135CDD6D59D0B666044C4673285A9D699AF1ECF8505CE77A067C998D2C40025DF67899EF649B55E77D660E
+            B875C413B8FF8FA4
+Path      : C:\Windows\System32\drivers\etc\services
+
