@@ -1,0 +1,13 @@
+PS C:\Users\hacker> $User32 = @"
+>> using System;
+>> using System.Runtime.InteropServices;
+>>
+>> public class User32 {
+>>     [DllImport("user32.dll", CharSet=CharSet.Auto)]
+>>     public static extern int MessageBox(IntPtr hWnd, String text, String caption, int options);
+>> }
+>> "@
+PS C:\Users\hacker> Add-Type $User32
+PS C:\Users\hacker> [User32]::MessageBox(0, "This is an alter", "MyBox", 0)
+
+It will pop up a alert box.
