@@ -57,6 +57,8 @@ vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
 bash-4.2$
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
+* Cross-Origin-Resource-Policy: This HTTP response header conveys a desire that the browser blocks no-cors cross-origin/cross-site requests to the given 
+resource.
 
 
 
