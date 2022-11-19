@@ -1,0 +1,2 @@
+C:\>netsh wlan show profile name="WIFI-SID" key=clear
+
