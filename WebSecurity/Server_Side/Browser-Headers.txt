@@ -56,3 +56,7 @@ bash-4.2$ openssl req -pubkey < MYCSR.csr | openssl pkey -pubin -outform der | o
 vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
 bash-4.2$
 
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
+
+
+
