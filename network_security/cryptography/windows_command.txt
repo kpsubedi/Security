@@ -20,7 +20,7 @@ Path      : C:\Windows\System32\drivers\etc\services
 
 
 $wc = [System.Net.WebClient]::new()
-$pkgurl = 'https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.3.4/hadoop-3.3.4-src.tar.gz'
+$pkgurl = 'https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4-src.tar.gz'
 $publishedHash = 'd65dc46d83f137909d645f2a410d27d8e9e57b9162d8c431dff3d2c96f5071c1b7817fcc7c7f07e2400fac198bdbebdbe1a1de99fa988e8eb33e1d280d62cf6d'
 $FileHash = Get-FileHash -Algorithm sha512 -InputStream ($wc.OpenRead($pkgurl))
 $FileHash.Hash -eq $publishedHash
