@@ -3,3 +3,12 @@ wmic useraccount where name="visibleuser" call rename name="visibleuser$"
 
 reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v <user> /t reg_dword /d 0
 
+
+
+Shutdown and Restart using command line
+---------------------------------------
+C:\>shutdown /s : shutdown 
+C:\>shutdown /r : reboot
+
+PS C:\> Stop-Computer 
+PS C:\> Restart-Computer 
