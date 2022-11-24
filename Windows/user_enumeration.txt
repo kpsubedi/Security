@@ -1,0 +1,2 @@
+wmic useraccount where name="visibleuser" call rename name="visibleuser$"
+
