@@ -10,10 +10,10 @@ or
 C:\>net groups
 Above command only available on a Windows Domain Controller.
 
-wmic useraccount where name="visibleuser" call rename name="visibleuser$"
+C:\>wmic useraccount where name="visibleuser" call rename name="visibleuser$"
 
 
-reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v <user> /t reg_dword /d 0
+C:\>reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v <user> /t reg_dword /d 0
 
 
 
