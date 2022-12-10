@@ -8,3 +8,14 @@ $python -c 'print "\x65\x66\x67\x68\x41\x42\x43\x44\x45"'
 >>> m.hexdigest()
 'fe01ce2a7fbac8fafaed7c982a04e229'
 
+
+>>> y = [65,65,65,65,65]
+>>> print(y)
+[65, 65, 65, 65, 65]
+>>> z = bytes(y)
+>>> print(z)
+b'AAAAA'
+>>> type(z)
+<class 'bytes'>
+>>> print(''.join('\\x{:02x}'.format(y) for y in z))
+\x41\x41\x41\x41\x41
