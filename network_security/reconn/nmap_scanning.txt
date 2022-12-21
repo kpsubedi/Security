@@ -4,3 +4,8 @@ Send a FIN packet.  If the destination host returns a RST then the port is
 closed, if there is no return RST then the port is listening.  The fact that 
 this method works on so many hosts is a sad testimonial to the state of the 
 networking code in most operating system kernels.
+
+3. Stealth scanning: (works on nearly all systems tested)
+  a. sends FIN
+  b. if RST is returned, not listening. 
+  c. otherwise, port is probably listening.
