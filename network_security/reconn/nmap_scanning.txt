@@ -1,1 +1,6 @@
 http://phrack.org/issues/49/15.html#article
+
+Send a FIN packet.  If the destination host returns a RST then the port is 
+closed, if there is no return RST then the port is listening.  The fact that 
+this method works on so many hosts is a sad testimonial to the state of the 
+networking code in most operating system kernels.
