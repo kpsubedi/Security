@@ -1,0 +1,10 @@
+C:\> netsh interface ip delete ?
+
+Commands in this context:
+delete address - Deletes an IP address or default gateway from the specified interface.
+delete arpcache - Flushes the ARP cache for one or all interfaces.
+delete destinationcache - Deletes the destination cache.
+delete dnsservers - Deletes the DNS server from the specified interface.
+delete neighbors - Flushes the ARP cache for one or all interfaces.
+delete route - Deletes a route. 
+delete winservers - Deletes the WINS server from the specified interface.
