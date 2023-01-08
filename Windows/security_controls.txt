@@ -2,3 +2,5 @@ AntiMalware Scan Interface (AMSI)
 
 https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal
 
+AMSI captures every PowerShell, Jscript, VBScript, VBA, or .NET command or script at run-time and passes it to the local antivirus 
+software for inspection.
