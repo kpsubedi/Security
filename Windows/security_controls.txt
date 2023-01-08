@@ -1,0 +1,4 @@
+AntiMalware Scan Interface (AMSI)
+
+https://learn.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal
+
