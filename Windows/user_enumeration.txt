@@ -26,8 +26,7 @@ PS C:\> Stop-Computer
 PS C:\> Restart-Computer 
 
 Change User Password 
-
+---------------------
 C:\>net user <USERNAME> * 
-
 This will prompt the password.
 
