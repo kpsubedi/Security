@@ -1,3 +1,41 @@
-Query password expire in domain
+User Enumeration
+================
 
 1. net user %USERNAME% /domain
+
+C:\>net user
+or
+C:\>net users
+
+C:\>net user <USER_NAME>
+
+
+C:\>net group 
+or
+C:\>net groups
+Above command only available on a Windows Domain Controller.
+
+C:\>wmic useraccount where name="visibleuser" call rename name="visibleuser$"
+
+
+C:\>reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /v <user> /t reg_dword /d 0
+
+
+
+Shutdown and Restart using command line
+---------------------------------------
+C:\>shutdown /s : shutdown 
+C:\>shutdown /r : reboot
+
+PS C:\> Stop-Computer 
+PS C:\> Restart-Computer 
+
+Change User Password 
+---------------------
+C:\>net user <USERNAME> * 
+This will prompt the password.
+
+
+
+Network Enumeration
+===================
