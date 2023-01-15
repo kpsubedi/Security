@@ -1,3 +1,4 @@
 https://orca.security/resources/blog/synapse-local-privilege-escalation-vulnerability-spark/
 https://www.paloaltonetworks.com/blog/2021/09/azurescape/
 https://github.com/RhinoSecurityLabs/cloudgoat
+https://github.com/ine-labs/AzureGoat
