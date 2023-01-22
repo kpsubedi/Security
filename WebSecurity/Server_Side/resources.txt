@@ -1,2 +1,5 @@
 [Resources]
 https://snigel.com/blog/a-simple-guide-to-coop-coep-corp-and-cors
+
+
+nikto -h scanme.nmap.org
