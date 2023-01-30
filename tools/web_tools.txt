@@ -2,5 +2,3 @@ Web Client
 ==========
 cadaver
 - A command-line WebDAV client for Unix.
-
-
