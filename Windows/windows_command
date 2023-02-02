@@ -43,4 +43,5 @@ Network Enumeration
 Appwiz.cpl is a run command shortcut to open the Add/Remove Programs or Uninstall a Program list on Microsoft Windows XP, Vista, 7, 8, and 10.
 C:\> appwiz.cpl 
 
+ The quickest way to go directly to the network adapters is the command: ncpa.cpl
 C:\> ncpa.cpl
