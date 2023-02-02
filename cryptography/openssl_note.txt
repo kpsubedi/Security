@@ -10,3 +10,24 @@ $openssl req -pubkey < demo.csr | openssl pkey -pubin -outform der | openssl dgs
 bash-4.2$ openssl req -pubkey < MYCSR.csr | openssl pkey -pubin -outform der | openssl dgst -sha256 -binary | openssl base64
 vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
 bash-4.2$ 
+
+
+
+PKI Usage for Signing and Verifying 
+===================================
+
+1. Create / Select a message 
+2. Generate private and public RSA keys
+3. Generate signature using private key
+4. Verifying signature using public key
+
+Example
+
+1. touch sample.txt
+2. echo "Sample Message" > sample.txt
+
+3. openssl genrsa -aes128 -passout pass:SamplePass123456 -out private.pem 4096
+4. openssl rsa -in private.pem -passin pass:SamplePass123456 -pubout -out public.pem 
+
+5. openssl dgst -sha256 -sign private.pem -out sign.sha256 sample.txt
+6. openssl dgst -sha256 -verify public.pem -signature sign.sha256 sample.txt
