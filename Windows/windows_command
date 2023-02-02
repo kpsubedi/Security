@@ -40,6 +40,7 @@ This will prompt the password.
 Network Enumeration
 ===================
 
+Appwiz.cpl is a run command shortcut to open the Add/Remove Programs or Uninstall a Program list on Microsoft Windows XP, Vista, 7, 8, and 10.
+C:\> appwiz.cpl 
 
-C:\> appwiz.cpl
 C:\> ncpa.cpl
