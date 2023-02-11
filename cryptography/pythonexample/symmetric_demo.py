@@ -27,3 +27,46 @@ decryptor = cipher_ecb.decryptor()
 pt = decryptor.update(ct) + decryptor.finalize()
 
 print("Decrypted Message: %s" %(pt))
+
+#######################################################################################
+#!/usr/bin/env python3
+import random
+import string
+
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher,algorithms,modes
+from cryptography.hazmat.backends import default_backend
+
+backend = default_backend()
+
+# Generate Key and Initialization Vector (IV)
+key = os.urandom(32)
+iv = os.urandom(16)
+
+# 
+
+mytext = b"Welcome to Cloud Security 2023 Spring - CBU"
+print("Original Message: %s" %(mytext))
+
+print(key)
+print(iv)
+
+cipher_cbc = Cipher(algorithms.AES(key), modes.CBC(iv))
+encryptor = cipher_cbc.encryptor()
+# print(type(mytext))
+
+count = 0
+while len(mytext) % 16 != 0:
+    mytext = mytext + bytes(random.choice(string.ascii_letters), encoding='utf-8')
+    counter = counter + 1
+
+print(count)
+
+ct = encryptor.update(mytext) + encryptor.finalize()
+print(ct)
+
+
+decryptor = cipher_cbc.decryptor()
+pt = decryptor.update(ct)
+print(pt[0:len(pt)-count])
+###########################################################################
