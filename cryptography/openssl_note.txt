@@ -31,3 +31,18 @@ Example
 
 5. openssl dgst -sha256 -sign private.pem -out sign.sha256 sample.txt
 6. openssl dgst -sha256 -verify public.pem -signature sign.sha256 sample.txt
+
+
+
+
+└─$ openssl list -mac-algorithms
+Provided MACs:
+  { 1.3.6.1.4.1.1722.12.2.1, BLAKE2BMAC } @ default
+  { 1.3.6.1.4.1.1722.12.2.2, BLAKE2SMAC } @ default
+  CMAC @ default
+  { 1.0.9797.3.4, GMAC } @ default
+  HMAC @ default
+  { 2.16.840.1.101.3.4.2.19, KMAC-128, KMAC128 } @ default
+  { 2.16.840.1.101.3.4.2.20, KMAC-256, KMAC256 } @ default
+  SIPHASH @ default
+  POLY1305 @ default
