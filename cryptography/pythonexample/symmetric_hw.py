@@ -13,4 +13,18 @@ ECB mode of operation example is here: https://github.com/kpsubedi/Security/blob
 To solve these problmes, you need to go through the api documentation here: https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.Cipher
 """
 
+### Problem 1 ###
+
+# Initialize key and initialization vector using urandom() form os package.
+
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.backends import default_backend
+backend = default_backend()
+import os
+
+key = os.urandom(32)
+iv = os.urandom(16)
+
+# Complete the following code to complete the CBC mode of operation in AES
+
 
