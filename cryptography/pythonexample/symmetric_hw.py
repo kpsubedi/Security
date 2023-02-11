@@ -15,11 +15,12 @@ To solve these problmes, you need to go through the api documentation here: http
 
 ### Problem 1 ###
 
-# Initialize key and initialization vector using urandom() form os package.
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 backend = default_backend()
+
+# Initialize key and initialization vector using urandom() form os package.
 import os
 
 key = os.urandom(32)
