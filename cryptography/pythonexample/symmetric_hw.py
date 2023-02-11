@@ -27,7 +27,7 @@ key = os.urandom(32)
 iv = os.urandom(16)
 
 # This is the message you need to encryt and decrypt 
-mytext = b"Welcome to Cloud Security 2023 Spring - CBU"
+mytext = b"Welcome to Cloud Security 2023 Spring"
 
 # Complete the following code to complete the CBC mode of operation in AES
 
