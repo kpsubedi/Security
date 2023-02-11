@@ -36,6 +36,32 @@ Example
 
 Helpful Section
 ===============
+
+└─$ openssl list -help        
+Usage: list [options]
+
+General options:
+ -help                     Display this summary
+
+Output options:
+ -1                        List in one column
+ -verbose                  Verbose listing
+ -select val               Select a single algorithm
+ -commands                 List of standard commands
+ -standard-commands        List of standard commands
+ -digest-commands          List of message digest commands (deprecated)
+ -digest-algorithms        List of message digest algorithms
+ -kdf-algorithms           List of key derivation and pseudo random function algorithms
+ -random-instances         List the primary, public and private random number generator details
+ -random-generators        List of random number generators
+ -mac-algorithms           List of message authentication code algorithms
+ -cipher-commands          List of cipher commands (deprecated)
+ -cipher-algorithms        List of cipher algorithms
+ -encoders                 List of encoding methods
+ -decoders                 List of decoding methods
+
+
+
 openssl list -standard-commands
 openssl list -digest-commands
 openssl list -cipher-commands
