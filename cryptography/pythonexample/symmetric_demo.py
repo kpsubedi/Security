@@ -55,10 +55,11 @@ cipher_cbc = Cipher(algorithms.AES(key), modes.CBC(iv))
 encryptor = cipher_cbc.encryptor()
 # print(type(mytext))
 
+# key track of how many bytes padded to make multile of 16 bytes
 count = 0
 while len(mytext) % 16 != 0:
     mytext = mytext + bytes(random.choice(string.ascii_letters), encoding='utf-8')
-    counter = counter + 1
+    count = count + 1
 
 print(count)
 
