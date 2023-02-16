@@ -47,40 +47,22 @@ C:\> appwiz.cpl
 C:\> ncpa.cpl
 
 
-c:\Windows\System32>dir | findstr cpl
-08/20/2022  08:28 AM           290,816 accessibilitycpl.dll
+c:\Windows\System32>dir | findstr cpl | findstr cpl$
 08/20/2022  08:28 AM           659,456 appwiz.cpl
 06/05/2021  04:05 AM           270,336 bthprops.cpl
-06/05/2021  04:05 AM           106,496 colorcpl.exe
 08/20/2022  08:28 AM           221,184 desk.cpl
-08/20/2022  08:28 AM           389,120 fhcpl.dll
 06/05/2021  04:06 AM            28,672 Firewall.cpl
-08/20/2022  08:32 AM           409,600 fvecpl.dll
 08/20/2022  08:28 AM           405,504 hdwwiz.cpl
-06/05/2021  04:05 AM           200,704 hgcpl.dll
 10/11/2022  10:05 AM           581,632 inetcpl.cpl
 08/20/2022  08:28 AM           249,856 intl.cpl
 08/20/2022  08:28 AM            61,440 irprops.cpl
-08/20/2022  08:28 AM           126,976 iscsicpl.dll
-08/20/2022  08:28 AM            28,672 iscsicpl.exe
 08/20/2022  08:28 AM           122,880 joy.cpl
 06/05/2021  04:05 AM            98,304 main.cpl
 08/20/2022  08:28 AM           409,600 mmsys.cpl
 08/20/2022  08:28 AM           122,880 ncpa.cpl
 08/20/2022  08:28 AM           258,048 powercfg.cpl
-08/20/2022  08:28 AM           204,800 powercpl.dll
-08/20/2022  08:32 AM           167,936 racpldlg.dll
-08/20/2022  08:28 AM           790,528 sdcpl.dll
-08/20/2022  08:28 AM           233,472 sharemediacpl.dll
 08/20/2022  08:28 AM           167,936 sysdm.cpl
-06/05/2021  04:05 AM           126,976 systemcpl.dll
 10/11/2022  10:05 AM           729,088 TabletPC.cpl
-08/20/2022  08:27 AM         1,089,536 taskbarcpl.dll
 06/05/2021  04:06 AM           126,976 telephon.cpl
-08/20/2022  08:28 AM           434,176 themecpl.dll
 08/20/2022  08:27 AM           249,856 timedate.cpl
-08/20/2022  08:28 AM           733,184 usercpl.dll
-06/05/2021  04:06 AM           864,256 werconcpl.dll
-08/20/2022  08:28 AM           102,400 wercplsupport.dll
 08/20/2022  08:28 AM           147,456 wscui.cpl
-
