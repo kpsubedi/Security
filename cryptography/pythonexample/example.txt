@@ -1,2 +1,4 @@
 
-chr(int((hex(ord('a') ^ 32)),16))
+>>> chr(int((hex(ord('a') ^ 32)),16))
+'A'
+
