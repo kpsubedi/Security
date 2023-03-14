@@ -1,0 +1,1 @@
+print(''.join('\\x{:02x}'.format(x) for x in shellcode))
