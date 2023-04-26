@@ -9,3 +9,7 @@ Domain      : DESKTOP-FGUE2CR
 SID         : S-1-5-21-3212576733-3217329394-906457150-500
 FullName    :
 Name        : Administrator
+
+C:\Windows\System32\config>copy c:\Windows\System32\config\SAM "C:\users\sub edi\Downloads\sam"
+The process cannot access the file because it is being used by another process.
+        0 file(s) copied.
