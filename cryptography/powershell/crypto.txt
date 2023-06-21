@@ -1,0 +1,1 @@
+Get-FileHash C:\Windows\System32\drivers\etc\hosts -algorithm md5
