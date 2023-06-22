@@ -1,3 +1,12 @@
 Privilege Escalation Techniques
 ===============================
 
+1. Kernel Exploits
+2. Service Exploits
+3. Weak file permissions 
+4. Sudo 
+5. Cron Jobs 
+6. SUID/SGID Executables
+7. Passwords and Key 
+8. NFS
+
