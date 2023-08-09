@@ -34,6 +34,11 @@ C:\> net user /delete testuser : local user delete
 
 C:\> net user /delete /domain testuser: Domain user delete
 
+Disable User Account
+--------------------
+C:\> net user testuser /Active:No 
+
+C:\> net user testuser /Active:No /domain
 
 
 
