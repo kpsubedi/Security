@@ -28,6 +28,14 @@ Change User Password
 C:\>net user <USERNAME> * 
 This will prompt the password.
 
+Delete User Account
+-------------------
+C:\> net user /delete testuser : local user delete
+
+C:\> net user /delete /domain testuser: Domain user delete
+
+
+
 
 C:\>net group 
 or
