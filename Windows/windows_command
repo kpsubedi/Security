@@ -3,11 +3,30 @@ User Enumeration
 
 1. net user %USERNAME% /domain
 
+List All User Accounts
+-----------------------
 C:\>net user
 or
 C:\>net users
 
+Display User Account Information
+--------------------------------
 C:\>net user <USER_NAME>
+
+
+Add User Account
+-----------------
+C:\> net user testuser TestUser123! /Add : Add into local computer
+
+C:\> net user testuser TestUser123! /Add /domain : To create a domain user account
+
+Ask for password instead of providing in command line
+C:\> net user /Add /domain testuser *
+
+Change User Password 
+---------------------
+C:\>net user <USERNAME> * 
+This will prompt the password.
 
 
 C:\>net group 
@@ -30,10 +49,7 @@ C:\>shutdown /r : reboot
 PS C:\> Stop-Computer 
 PS C:\> Restart-Computer 
 
-Change User Password 
----------------------
-C:\>net user <USERNAME> * 
-This will prompt the password.
+
 
 
 
