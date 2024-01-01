@@ -1,2 +1,6 @@
 Intro to Injection Attacks (IA)
 ===============================
+- IA is one of the most common vulnerabilities and listed in OWASP Top 10 since its first release in 2003. 
+- Some injection vulnerabilities are reasonably well known, for instance, SQL Injection, Command Injection, or Cross-Site Scripting (XSS), 
+there are significantly more injection vulnerabilities, most of which are less well known. 
+- 
