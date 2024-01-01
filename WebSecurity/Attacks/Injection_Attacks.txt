@@ -12,6 +12,8 @@ Injection Attacks
 -----------------
 * XPath Injection: XML Path Language (XPath) is a query language for Extensible Markup Language (XML) data, similar to how SQL is a query language for 
 databases. As such, XPath is used to query data from XML documents. Web applications that need to retrieve data stored in an XML format 
-thus rely on XPath to retrieve the required data. 
+thus rely on XPath to retrieve the required data. XPath Injection vulnerabilities arise when user input is inserted into XPath queries without 
+proper sanitization. Like SQLi vulnerabilities, XPath injection can risk the entire data as successfully exploiting XPath injection 
+allows an attacker to retrieve the entire XML document. 
 
 
