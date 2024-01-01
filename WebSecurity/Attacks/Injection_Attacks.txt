@@ -16,4 +16,12 @@ thus rely on XPath to retrieve the required data. XPath Injection vulnerabilitie
 proper sanitization. Like SQLi vulnerabilities, XPath injection can risk the entire data as successfully exploiting XPath injection 
 allows an attacker to retrieve the entire XML document. 
 
+* LDAP Injection: Lightweight Diretory Access Protocol (LDAP) is a protocol used to access directory server such as Active Directory (AD). 
+Web applications often use LDAP queries to enable integration with AD services. For instance, LDAP can enable AD users to authenticate to 
+the web application. LDAP injection vulnerabilities arise when user input is inserted into serarch filters without proper sanitization. 
+This can lead to authentication bypasses if LDAP authentication is incorrectly implemented. Additionally, LDAP injection can lead to
+loss of data. 
+
+* HTML Injection in PDF Generators
+----------------------------------
 
