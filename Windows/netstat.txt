@@ -15,6 +15,7 @@ NETSTAT [-a] [-b] [-e] [-f] [-i] [-n] [-o] [-p proto] [-r] [-s] [-t] [-x] [-y] [
                 and so forth until TCP/IP was reached. Note that this option
                 can be time-consuming and will fail unless you have sufficient
                 permissions.
+Note: -b require elevated cmd / powershell prompt.
   -e            Displays Ethernet statistics. This may be combined with the -s
                 option.
   -f            Displays Fully Qualified Domain Names (FQDN) for foreign
