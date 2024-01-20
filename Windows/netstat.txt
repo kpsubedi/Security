@@ -47,3 +47,17 @@ Note: -b require elevated cmd / powershell prompt.
 
 c:\>
 ====================================================================
+
+Example 1: 
+-a : Display all connections and listending ports
+-n : Displays addresses and port numbers in numerical form
+-o : Displays the owning process ID assoicated with each connection
+
+c:\>netstat -ano
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State           PID
+
+--------------
+
