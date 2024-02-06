@@ -1,1 +1,14 @@
 https://www.youtube.com/watch?v=k-Cv8Q3zWNQ
+
+Testing vs Fuzzing
+------------------
+
+// Test
+MyApi(Input1);
+MyApi(Input2);
+MyApi(Input3);
+
+// Fuzz
+while (true)
+    MyApi(
+          Fuzzer.GenerateInput());
