@@ -11,6 +11,11 @@ bash-4.2$ openssl req -pubkey < MYCSR.csr | openssl pkey -pubin -outform der | o
 vNHHK4eySa+w+R9O6T3fx78AKdVheRaAqKQfa1RdXs0=
 bash-4.2$ 
 
+PUBLIC KEY INFRASTRUCTRE (PKI)
+==============================
+
+PKI Usage for Encryption
+========================
 
 
 PKI Usage for Signing and Verifying 
