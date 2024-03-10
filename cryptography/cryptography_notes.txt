@@ -1,3 +1,6 @@
+[URLs]
+https://cryptography.io/en/latest/
+
 []
 
 Cryptography is:
