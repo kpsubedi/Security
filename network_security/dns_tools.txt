@@ -1,3 +1,11 @@
 [NSLOOKUP]
 
 nslookup -port=42 isc.org 8.8.8.8
+
+C:\>nslookup /?
+Usage:
+   nslookup [-opt ...]             # interactive mode using default server
+   nslookup [-opt ...] - server    # interactive mode using 'server'
+   nslookup [-opt ...] host        # just look up 'host' using default server
+   nslookup [-opt ...] host server # just look up 'host' using 'server'
+
