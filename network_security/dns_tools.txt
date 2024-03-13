@@ -1,0 +1,3 @@
+[NSLOOKUP]
+
+nslookup -port=42 isc.org 8.8.8.8
