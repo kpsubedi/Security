@@ -14,3 +14,15 @@ Cryptography is not:
   * many many examples of broken ad-hoc designs 
 
   
+
+
+[Signatures]
+Beware of how you implement ECDSA signatures ... a single leak of the nonce value will reveal the private key.
+
+With an ECDSA signature, we sign a message with a private key (priv) and prove the signature with the public key (pub). A random value (a nonce) is then used to randomize the signature. Each time we sign, we create a random nonce value and it will produce a different (but verifiable) signature. Overall the signer only has to reveal the elements of the signature and their public key, and not the nonce value. If the signer reveals just one nonce value by mistake, an intruder can discover the private key.
+
+In this case, we will reveal the nonce value and determine the private key (NIST256p)
+
+https://lnkd.in/euXs_D7g
+
+
