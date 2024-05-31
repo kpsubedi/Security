@@ -16,6 +16,25 @@ PUBLIC KEY INFRASTRUCTRE (PKI)
 
 PKI Usage for Encryption
 ========================
+1. Create a private / public keys.
+2. Encrypt the data using public key of the receiver and sends the encrypted data. Ciper = E(Data, public_key_receiver)
+3. The receiver decrypts the data using received encrypted data and corresponding private key. Datat = D(Cipher, private_key)
+
+Example
+--------
+1. Create a private / public keys using RSA 
+Generate RSA private key:
+openssl genrsa -out private_rsa.pem 4096
+Extract RSA public key:
+openssl rsa -in private_rsa.pem -pubout > public_rsa.pem
+
+2. Encrypt the data 
+
+openssl pkeyutl -encrypt -inkey public_rsa.pem -pubin -in data.txt -out data.enc
+
+3. Decrypt the data using private key
+openssl pkeyutl -decrypt -inkey private_rsa.pem -in data.enc > data.txt
+cat data.txt
 
 
 PKI Usage for Signing and Verifying 
