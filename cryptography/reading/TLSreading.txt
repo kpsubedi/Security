@@ -1,0 +1,7 @@
+[TLS Cryptography In-Depth - Dr. Paul Duplys and Dr. Roland Schmitz]
+
+This book starts with a general introduction to cryprography in 
+Part I, Getting Started,
+Part II, Shaking Hands,
+Part III, Off the Record, are loosely organized around the most important subprotocols of TLS, the handshake protocol and the record protocol.
+Part IV, Bleeding Hearts 
