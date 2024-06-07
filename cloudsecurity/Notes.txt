@@ -1,0 +1,10 @@
+[Practical Cloud Security]
+
+Learning Objectives
+1. Learn the latest threats and challenges in the cloud security space
+2. Manage cloud providers that store or process data or deliver administrative control
+3. Learn how standard principles and concepts - such as least privilege and defense in depth - apply in the cloud
+4. Understand the critical role played by IAM in the cloud 
+5. Use best tactics for detecting, responding, and recovering from the most common security incidents 
+6. Manage various types of vulnerabilities, especially those common in multicloud or hybrid cloud architectures 
+7. Examine privilege access management in cloud environments 
