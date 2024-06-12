@@ -3,3 +3,8 @@ Pen300
 [Windows Concepts]
 Windows servers and 
 [Windows Registry]
+
+If you're worked with Windows operating systems, you've probably heard about or looked at the registry. You can't talk much about Windows internals without 
+referring to the registry because 
+- it's the system databsae that contains the information required to boot and configure the system, system-wide software settings that control the operation of Windows, the security database, and per-user configuration settings such as which screen saver to use. 
+In addtion, 
