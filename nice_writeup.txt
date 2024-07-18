@@ -1,0 +1,22 @@
+After a decade in hashtag#InfraSec and hashtag#CloudSec before getting into hashtag#AppSec, I've had a revelation: AppSec isn't just challenging – it's in a league of its own, 
+if you're in an smaller environment or a newer company this might not be an issue for you. But here's the kicker: it's not anyone's fault. It's the nature of the beast.
+
+The contrast is stark:
+
+InfraSec: Ask how many cloud accounts, K8s clusters, or VPCs a company has, and you'll likely get an answer. It's usually trackable or can be tracked, and manageable.
+
+AppSec: Try asking about the number of gRPC services, REST APIs per service, or web frameworks in use. Watch the panic set in. These questions often kick off impromptu projects nobody volunteered for.
+
+Why the disparity?
+Infrastructure is relatively stable, they change and evolve but not as rapidly. Applications? They evolve daily. Each commit could introduce a new library, API, or service. It's chaos, but it's also innovation.
+
+The hard truth: Securing this ever-changing products requires heavy lifting. It's easy for security teams to shy away from such challenge, opting for the "out of sight, out of mind" approach due to the high commitment needed.
+
+But here's my take: visibility is a must! Start small:
+- Map your critical services
+- Track changes in your most sensitive apps
+- Build relationships with dev teams
+
+Remember, you can't secure what you can't see. Period.
+
+What's your experience? How are you tackling the AppSec lack of visibility in your organization? Let's share ideas and push this field forward.
