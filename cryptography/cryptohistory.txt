@@ -1,29 +1,51 @@
 Cryptology is a young science.
 
 Though it has been used for thousands of years to hide secret messages, systematic study of cryptology as a science (and perhaps an art) just started around one hundred years ago.
-The first known evidence of the use of cryptography (in some form) was found in an inscription carved around 1900 BC, in the main chamber of the tomb of the nobleman Khnumhotep II, in Egypt. The scribe used some unusual hieroglyphic symbols here and there in place of more ordinary ones. The purpose was not to hide the message but perhaps to change its form in a way which would make it appear dignified. Though the inscription was not a form of secret writing, but incorporated some sort of transformation of the original text, and is the oldest known text to do so. Evidence of some use of cryptography has been seen in most major early civilizations. "Arthshashtra", a classic work on statecraft written by Kautalya, describes the espionage service in India and mentions giving assignments to spies in "secret writing" - sounds like an ancient version of James Bond?
-Fast forwarding to around 100 BC, Julius Caesar was known to use a form of encryption to convey secret messages to his army generals posted in the war front. This substitution cipher, known as Caesar cipher, is perhaps the most mentioned historic cipher in academic literature. (A cipher is an algorithm used for encryption or decryption.) In a substitution cipher, each character of the plain text (plain text is the message which has to be encrypted) is substituted by another character to form the cipher text (cipher text is the encrypted message). The variant used by Caesar was a shift by 3 cipher. Each character was shifted by 3 places, so the character 'A' was replaced by 'D', 'B' was replaced by 'E', and so on. The characters would wrap around at the end, so 'X' would be replaced by 'A'.
+The first known evidence of the use of cryptography (in some form) was found in an inscription carved around 1900 BC, in the main chamber of the tomb of the nobleman Khnumhotep II, in Egypt. 
+The scribe used some unusual hieroglyphic symbols here and there in place of more ordinary ones. The purpose was not to hide the message but perhaps to change its form in a way which would make it appear dignified. 
+Though the inscription was not a form of secret writing, but incorporated some sort of transformation of the original text, and is the oldest known text to do so. 
+Evidence of some use of cryptography has been seen in most major early civilizations. "Arthshashtra", a classic work on statecraft written by Kautalya, describes the espionage service in India and mentions giving assignments to spies in "secret writing" - sounds like an ancient version of James Bond?
+Fast forwarding to around 100 BC, Julius Caesar was known to use a form of encryption to convey secret messages to his army generals posted in the war front. 
+This substitution cipher, known as Caesar cipher, is perhaps the most mentioned historic cipher in academic literature. (A cipher is an algorithm used for encryption or decryption.) 
+In a substitution cipher, each character of the plain text (plain text is the message which has to be encrypted) is substituted by another character to form the cipher text (cipher text is the encrypted message). 
+The variant used by Caesar was a shift by 3 cipher. Each character was shifted by 3 places, so the character 'A' was replaced by 'D', 'B' was replaced by 'E', and so on. The characters would wrap around at the end, so 'X' would be replaced by 'A'.
 Figure 1.
-It is easy to see that such ciphers depend on the secrecy of the system and not on the encryption key. Once the system is known, these encrypted messages can easily be decrypted. In fact, substitution ciphers can be broken by using the frequency of letters in the language.
-During the 16th century, Vigenere designed a cipher that was supposedly the first cipher which used an encryption key. In one of his ciphers, the encryption key was repeated multiple times spanning the entire message, and then the cipher text was produced by adding the message character with the key character modulo 26. (Modulo, or mod, is a mathematical expression in which you calculate the remainder of a division when one number is divided by another.) As with the Caesar cipher, Vigenere's cipher can also easily be broken; however, Vigenere's cipher brought the very idea of introducing encryption keys into the picture, though it was poorly executed. Comparing this to Caesar cipher, the secrecy of the message depends on the secrecy of the encryption key, rather than the secrecy of the system.
+It is easy to see that such ciphers depend on the secrecy of the system and not on the encryption key. Once the system is known, these encrypted messages can easily be decrypted.
+In fact, substitution ciphers can be broken by using the frequency of letters in the language.
+During the 16th century, Vigenere designed a cipher that was supposedly the first cipher which used an encryption key. 
+In one of his ciphers, the encryption key was repeated multiple times spanning the entire message, and then the cipher text was produced by adding the message character with the key 
+character modulo 26. (Modulo, or mod, is a mathematical expression in which you calculate the remainder of a division when one number is divided by another.) As with the Caesar cipher,
+Vigenere's cipher can also easily be broken; however, Vigenere's cipher brought the very idea of introducing encryption keys into the picture, though it was poorly executed. 
+Comparing this to Caesar cipher, the secrecy of the message depends on the secrecy of the encryption key, rather than the secrecy of the system.
 
 Figure 2.
-At the start of the 19th century when everything became electric, Hebern designed an electro-mechanical contraption which was called the Hebern rotor machine. It uses a single rotor, in which the secret key is embedded in a rotating disc. The key encoded a substitution table and each key press from the keyboard resulted in the output of cipher text. This also rotated the disc by one notch and a different table would then be used for the next plain text character. This was again broken by using letter frequencies.
+At the start of the 19th century when everything became electric, Hebern designed an electro-mechanical contraption which was called the Hebern rotor machine. 
+It uses a single rotor, in which the secret key is embedded in a rotating disc. The key encoded a substitution table and each key press from the keyboard resulted in the output of cipher text.
+This also rotated the disc by one notch and a different table would then be used for the next plain text character. This was again broken by using letter frequencies.
 
-The Engima machine was invented by German engineer Arthur Scherbius at the end of World War I, and was heavily used by the German forces during the Second World War. The Enigma machine used 3 or 4 or even more rotors. The rotors rotate at different rates as you type on the keyboard and output appropriate letters of cipher text. In this case the key was the initial setting of the rotors.
+The Engima machine was invented by German engineer Arthur Scherbius at the end of World War I, and was heavily used by the German forces during the Second World War. 
+The Enigma machine used 3 or 4 or even more rotors. The rotors rotate at different rates as you type on the keyboard and output appropriate letters of cipher text. In this case the key was the initial setting of the rotors.
 
 The Enigma machine's cipher was eventually broken by Poland and the technology was later transferred to the British cryptographers who designed a means for obtaining the daily key.
 
 Figure 3.
 Up to the Second World War, most of the work on cryptography was for military purposes, usually used to hide secret military information. However, cryptography attracted commercial attention post-war, with businesses trying to secure their data from competitors.
 
-In the early 1970's, IBM realized that their customers were demanding some form of encryption, so they formed a "crypto group" headed by Horst-Feistel. They designed a cipher called Lucifer. In 1973, the Nation Bureau of Standards (now called NIST) in the US put out a request for proposals for a block cipher which would become a national standard. They had obviously realized that they were buying a lot of commercial products without any good crypto support. Lucifer was eventually accepted and was called DES or the Data Encryption Standard. In 1997, and in the following years, DES was broken by an exhaustive search attack. The main problem with DES was the small size of the encryption key. As computing power increased it became easy to brute force all different combinations of the key to obtain a possible plain text message.
+In the early 1970's, IBM realized that their customers were demanding some form of encryption, so they formed a "crypto group" headed by Horst-Feistel. 
+They designed a cipher called Lucifer. In 1973, the Nation Bureau of Standards (now called NIST) in the US put out a request for proposals for a block cipher which would become a national standard. 
+They had obviously realized that they were buying a lot of commercial products without any good crypto support. Lucifer was eventually accepted and was called DES or the Data Encryption Standard. 
+In 1997, and in the following years, DES was broken by an exhaustive search attack. The main problem with DES was the small size of the encryption key. 
+As computing power increased it became easy to brute force all different combinations of the key to obtain a possible plain text message.
 
-In 1997, NIST again put out a request for proposal for a new block cipher. It received 50 submissions. In 2000, it accepted Rijndael, and christened it as AES or the Advanced Encryption Standard. Today AES is a widely accepted standard used for symmetric encryption.
+In 1997, NIST again put out a request for proposal for a new block cipher. It received 50 submissions. In 2000, it accepted Rijndael, and christened it as AES or the Advanced Encryption Standard. 
+Today AES is a widely accepted standard used for symmetric encryption.
 
-In recent times, advancements in Quantum computers have led us to think about Post Quantum Cryptography. In 2016 NIST declared a “call for proposals” seeking public help in designing quantum resistant algorithms which could help us “withstand the assault of a future quantum computer”. In 2020 NIST announced four finalists for the same.
+In recent times, advancements in Quantum computers have led us to think about Post Quantum Cryptography.
+In 2016 NIST declared a “call for proposals” seeking public help in designing quantum resistant algorithms which could help us “withstand the assault of a future quantum computer”.
+In 2020 NIST announced four finalists for the same.
 
 To conclude, history teaches us:
 
 The secrecy of your message should always depend on the secrecy of the key, and not on the secrecy of the encryption system. (This is known as Kerckhoffs's principle.)
-Related to the above, always use ciphers which have been publicly reviewed and have been established as a standard. Using "secret crypto" is bad, because just like the Caesar cipher, once the system is known, all messages can be decrypted. For example, if your key is compromised, an attacker could access your messages; however, if the attacker can compromise the crypto system itself, they can obtain the plain text of every message (not just for a single person) encrypted by that system.
+Related to the above, always use ciphers which have been publicly reviewed and have been established as a standard. 
+Using "secret crypto" is bad, because just like the Caesar cipher, once the system is known, all messages can be decrypted. For example, if your key is compromised, an attacker could access your messages; however, if the attacker can compromise the crypto system itself, they can obtain the plain text of every message (not just for a single person) encrypted by that system.
