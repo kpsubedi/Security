@@ -46,6 +46,6 @@ In 2020 NIST announced four finalists for the same.
 
 To conclude, history teaches us:
 
-The secrecy of your message should always depend on the secrecy of the key, and not on the secrecy of the encryption system. (This is known as Kerckhoffs's principle.)
-Related to the above, always use ciphers which have been publicly reviewed and have been established as a standard. 
+1. The secrecy of your message should always depend on the secrecy of the key, and not on the secrecy of the encryption system. (This is known as Kerckhoffs's principle.)
+2. Related to the above, always use ciphers which have been publicly reviewed and have been established as a standard. 
 Using "secret crypto" is bad, because just like the Caesar cipher, once the system is known, all messages can be decrypted. For example, if your key is compromised, an attacker could access your messages; however, if the attacker can compromise the crypto system itself, they can obtain the plain text of every message (not just for a single person) encrypted by that system.
