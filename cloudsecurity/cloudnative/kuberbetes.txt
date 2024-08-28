@@ -1,2 +1,8 @@
 Kubernetes Security: Attacking and Defending Kubernetes Part 1
 ==============================================================
+
+Linux Command Basic
+-------------------
+https://cheatography.com/davechild/cheat-sheets/linux-command-line/#google_vignette
+https://linuxcommand.org/
+
