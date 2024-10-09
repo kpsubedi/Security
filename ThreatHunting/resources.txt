@@ -1,3 +1,6 @@
 [Building a Threat Hunting Lab]
 - DetectionLab 
 - HELK
+
+[Reading Resource]
+https://www.threathunting.net/reading-list
