@@ -1,1 +1,19 @@
 [SSH]
+C:\>ssh -Q help
+cipher
+cipher-auth
+compression
+kex
+key
+key-cert
+key-plain
+key-sig
+mac
+protocol-version
+sig
+
+C:\>ssh -Q cipher-auth
+aes128-gcm@openssh.com
+aes256-gcm@openssh.com
+chacha20-poly1305@openssh.com
+
