@@ -17,3 +17,5 @@ aes128-gcm@openssh.com
 aes256-gcm@openssh.com
 chacha20-poly1305@openssh.com
 
+[References]
+https://man.openbsd.org/ssh.1
