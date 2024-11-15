@@ -1,8 +1,8 @@
 Windows Security Internals: A Deep Dive into Windows Authentication, Authorization, and Auditing 
 By James Forshaw
 ================================================================================================
-FORWARD
-*******
+FORWARD by Jeffery Snover
+*************************
 Core architectural difference between Linux and Windows:
   - Linux is a file-oriented operating system,while Windows is API oriented 
   - Though APIs can provide a much richer set of capabilities, they come at the expense of simplicity 
@@ -13,4 +13,6 @@ Core architectural difference between Linux and Windows:
 This is very time-consuming consuming loop, and it's why so few people have a deep understanding of how Windows security works- it's just 
 too hard to explore.
 
-It was because of these problems that I invented PowerShell. 
+It was because of these problems that I invented PowerShell. I wanted administrators to automate Windows and had originally tried to 
+do so by distributing Unix tools for free. (Remember Windows Services for Unix?) This failed because 
+*
