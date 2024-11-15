@@ -1,0 +1,3 @@
+Windows Security Internals: A Deep Dive into Windows Authentication, Authorization, and Auditing 
+By James Forshaw
+================================================================================================
