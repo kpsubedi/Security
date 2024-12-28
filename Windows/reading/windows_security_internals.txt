@@ -2,6 +2,11 @@ Additional Resources
 --------------------
 https://www.tiraniddo.dev/
 https://github.com/tyranid/windows-security-internals
+Lee Holmes
+Alex Ionescu
+Lee Christensen
+Will Schroeder
+Nick Landers
 
 
 Part I An Overview of The Windows Operating System
