@@ -1,2 +1,11 @@
+Additional Resources
+--------------------
+https://www.tiraniddo.dev/
+https://github.com/tyranid/windows-security-internals
+
+
 Part I An Overview of The Windows Operating System
 ==================================================
+
+Setting Up A PowerShell Testing Environment
+-------------------------------------------
