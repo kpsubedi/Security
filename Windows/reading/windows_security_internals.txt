@@ -2,6 +2,9 @@ Additional Resources
 --------------------
 https://www.tiraniddo.dev/
 https://github.com/tyranid/windows-security-internals
+https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools
+
+
 Lee Holmes
 Alex Ionescu
 Lee Christensen
