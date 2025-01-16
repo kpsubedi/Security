@@ -6,3 +6,6 @@ PS C:\Users\3877898> $Bytes = [System.Text.Encoding]::Unicode.GetBytes($Text)
 PS C:\Users\3877898> $EncodedText = [Convert]::ToBase64String($Bytes)
 PS C:\Users\3877898> $EncodedText
 
+Searching on the file based on the content
+-------------------------------------------
+PS C:\>Get-ChildItem -Path "C:\Users\searchdir\" -Recurse -File | Select-String -Pattern "Pattern_to_find"
