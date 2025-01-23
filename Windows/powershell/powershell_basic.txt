@@ -1,1 +1,7 @@
 [Setting Up A Powershell Testing Environment]
+
+[[Script Execution Policy]]
+- Which determines what types of scripts PowerShell can execute. For example, we can check the current setting for the execution policy as follows:
+PS C:\> Get-ExecutionPolicy
+Restricted
+
