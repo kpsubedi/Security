@@ -18,7 +18,6 @@ PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 - If you're using the open source version of PowerShell or version 5.1 on Windows Server, then the default script execution policy is RemoteSigned and you donot have to change anything. Here are the commands to query PowerShell version 
 PS C:\> GET-Host
 
-
 Name             : ConsoleHost
 Version          : 5.1.26100.2161
 InstanceId       : ff2c5f33-f377-4199-87ec-09a191edfb00
@@ -31,13 +30,11 @@ IsRunspacePushed : False
 Runspace         : System.Management.Automation.Runspaces.LocalRunspace
 
 
-
 PS C:\> GET-Host | Select-Object Version
 
 Version
 -------
 5.1.26100.2161
-
 
 PS C:\> $PSVersionTable
 
@@ -52,4 +49,43 @@ WSManStackVersion              3.0
 PSRemotingProtocolVersion      2.3
 SerializationVersion           1.1.0.1
 
+- Now that we can run unsigned scripts, we can install the PowerShell module we'll be using for this book. 
+- A PowerShell module is a package of scripts and .NET binaries that export PowerShell commands. Every installation of PowerShell comes preinstalled with several modules for tasks ranging from configuring your applications to setting up Windows Update. You can install a module manually by copying its files, but the easier approach is to use the PowerShell Gallery (https://www.powershellgallery.com), an online repository of modules.
 
+[[Install A PowerShell Module]]
+- To install a module from the PowerShell Gallery, we use PowerShell's Install-Module command. For this book, we'll need to install the NtObjectManager module, which we can do using the following command:
+
+PS C:\> Install-Module NtObjectManager -Scope CurrentUser -Force
+
+NuGet provider is required to continue
+PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The
+NuGet provider must be available in 'C:\Program Files (x86)\PackageManagement\ProviderAssemblies' or
+'C:\<>\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
+running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
+and import the NuGet provider now?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
+
+Press "Y".
+
+- If you have the module installed already, you can ensure that you have the latest version by using the Update-Module commands:
+
+PS C:\> Update-Module NtObjectManager
+
+- Once it's installed, you can load the module using the Import-Module command:
+
+PS C:\> Import-Module NtObjectManager
+PS C:\> New-NtObjectDescriptor
+New-NtObjectDescriptor : The term 'New-NtObjectDescriptor' is not recognized as the name of a cmdlet, function,
+script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is
+correct and try again.
+At line:1 char:1
++ New-NtObjectDescriptor
++ ~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (New-NtObjectDescriptor:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\> New-NtSecurityDescriptor
+
+Owner DACL ACE Count SACL ACE Count Integrity Level
+----- -------------- -------------- ---------------
+NONE  NONE           NONE           NONE
