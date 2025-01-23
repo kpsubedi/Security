@@ -14,3 +14,42 @@ PS C:\> Get-ExecutionPolicy
 RemoteSigned
 - The above command changes the execution policy for the current user only, not the entire system. If you want to change it for all users, you'll need to start PowerShell as an administrator and then rerun the command, removing the Scope parameter. 
 PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+
+- If you're using the open source version of PowerShell or version 5.1 on Windows Server, then the default script execution policy is RemoteSigned and you donot have to change anything. Here are the commands to query PowerShell version 
+PS C:\> GET-Host
+
+
+Name             : ConsoleHost
+Version          : 5.1.26100.2161
+InstanceId       : ff2c5f33-f377-4199-87ec-09a191edfb00
+UI               : System.Management.Automation.Internal.Host.InternalHostUserInterface
+CurrentCulture   : en-US
+CurrentUICulture : en-US
+PrivateData      : Microsoft.PowerShell.ConsoleHost+ConsoleColorProxy
+DebuggerEnabled  : True
+IsRunspacePushed : False
+Runspace         : System.Management.Automation.Runspaces.LocalRunspace
+
+
+
+PS C:\> GET-Host | Select-Object Version
+
+Version
+-------
+5.1.26100.2161
+
+
+PS C:\> $PSVersionTable
+
+Name                           Value
+----                           -----
+PSVersion                      5.1.26100.2161
+PSEdition                      Desktop
+PSCompatibleVersions           {1.0, 2.0, 3.0, 4.0...}
+BuildVersion                   10.0.26100.2161
+CLRVersion                     4.0.30319.42000
+WSManStackVersion              3.0
+PSRemotingProtocolVersion      2.3
+SerializationVersion           1.1.0.1
+
+
