@@ -5,3 +5,12 @@
 PS C:\> Get-ExecutionPolicy
 Restricted
 
+- The restricted blocks all scripts from running unless they are signed with a trusted certificate. 
+- As the scripts in this book are unsigned, we'll change the execution policy to RemoteSigned. This execution policy allows us to run unsigned PowerShell scripts if they're created locally but will not allow us to execute unsigned scripts downloaded in a web browser or attached to emails. 
+
+- Run the following command to set the execution policy: 
+PS C:\> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+PS C:\> Get-ExecutionPolicy
+RemoteSigned
+- The above command changes the execution policy for the current user only, not the entire system. If you want to change it for all users, you'll need to start PowerShell as an administrator and then rerun the command, removing the Scope parameter. 
+PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
