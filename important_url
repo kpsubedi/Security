@@ -593,7 +593,7 @@ http://cryptoservices.github.io/challenges/
 https://cryptopals.com/
 https://www.hackthebox.eu/
 
-[CTP Writeup]
+[CTF Writeup]
 https://trailofbits.github.io/ctf/
 http://shell-storm.org/
 https://www.corelan.be/
@@ -700,6 +700,7 @@ https://redops.at/en/blog/shell-we-assemble-unleashing-x86-inline-assembly-for-s
 
 [Individual Blogs]
 https://www.ripstech.com/
+
 [Active Directory]
 https://1337red.wordpress.com/building-and-attacking-an-active-directory-lab-with-powershell/
 https://thesprawl.org/research/
