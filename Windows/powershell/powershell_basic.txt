@@ -89,3 +89,8 @@ PS C:\> New-NtSecurityDescriptor
 Owner DACL ACE Count SACL ACE Count Integrity Level
 ----- -------------- -------------- ---------------
 NONE  NONE           NONE           NONE
+
+[[An Overview of the PowerShell Language]]
+
+[[[Understanding Types, Variables, and Expressions]]]
+
