@@ -94,3 +94,59 @@ NONE  NONE           NONE           NONE
 
 [[[Understanding Types, Variables, and Expressions]]]
 
+- PowerShell supports many different data types, from basic integers and strings to complex objects. The following shows some of the most common built-in types:
+Type            .Net type                    Examples
+int             System.Int32                142, 0x8E, 0216
+long            System.Int64                142L, 0x8EL, 0216L
+string          System.String                "Hello", 'World!'
+double          System.Double                1.0, 1e10
+bool            System.Boolean               $true, $false
+array           System.Object[]              @(1, "ABC", $true)
+hashtable       System.Collections.Hashtable    @{A=1; B="ABC"}
+
+- To perform calculations on basic types, we can use well-known operators such as +, -, *, and /. These operators can be overloaded; for example, + is used for addition as well as for concatenating strings and arrays. 
+- The following provides a list of common operators, with simple examples and their results.
+Operator        Name                        Examples                        Results
++               Addition or concatenation   1 + 2, "Hello" + "World!"       3, "HelloWorld!"
+-               Subtraction                 2 - 1                           1
+*               Multiplication              2 * 4                           8
+/               Division                    8 / 4                           2
+%               Modulus                     6 % 4                           2
+[]              Index                       @(3, 2, 1, 0)[1]                2
+-f              String formatter            "0x{0:X} {1}" -f 42, 123        "0x2A 123"
+-band           Bitwise AND                 0x1FF -band 0xFF                255
+-bor            Bitwise OR                  0x100 -bor 0x20                 288
+-bxor           Bitwise XOR                 0xCC -bxor 0xDD                 17
+-bnot           Bitwise NOT                 -bnot 0xEE                      -239
+-and            Boolean AND                 $true -and $false                $false
+-or             Boolean OR                  $true -or $false                 $true
+-not            Boolean NOT                 -not $ture                       $false
+-eq             Equals                      "Hello" -eq "Hello"              $true
+-ne             Not equals                  "Hello" -ne "Hello"              $false
+-lt             Less than                    4 -lt 10                        $true
+-gt             Greater than                 4 -gt 10                        $false
+
+- You can assign values to variables using the assignment operator, =. E.g., $x = 45. A variable has an alphanumeric name prefixed with the $ character. For example, the following example shows how you can capture an array in a variable and use the indexing operator to look up a value. 
+- PS> $var = 3, 2, 1, 0
+- PS> $var[1] 
+  2
+
+- There are also some predefined variables we'll ise in the rest of this book. These variables are:
+$null => Represents the NULL value, which indicates the absence of a value in comparisons 
+$pwd => Contains the current working directory 
+$pid => Contains the process ID of the shell 
+$env => Accesses the process environment (for example, $env:WinDir to get the Windows directory)
+
+- You can enumerate all variables using the Get-Variable command. 
+
+- In the above data types section, you might have noticed that there were two string examples, one using double quotation marks and one using single quotation marks. 
+- One difference between the two is that a double-quoted string support STRING INTERPOLATION, where you insert a variable name into the string as a placeholder and PowerShell includes its value in the result. 
+- Example 
+PS> $var = 42
+PS> "The magic number is $var"
+The magic number is 42
+
+PS>'It is not $var'
+It is not $var
+
+
