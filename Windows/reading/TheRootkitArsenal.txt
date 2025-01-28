@@ -1,5 +1,8 @@
 [SECOND EDITION]
 
+# Preface #
+- The quandary of information technology is that everything changes. It's inevitable. The continents of high technology drift on a daily basis right underneath our feet.
+
 [Part I - Foundations]
 
 [Part II - Postmortem]
