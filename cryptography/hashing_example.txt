@@ -1,0 +1,1 @@
+python2 -c 'import crypt; print(crypt.crypt("<<YOURPASSWORD>>","$y$j9T$hW9K52EOJBFsViQ7HRz370$"))'
