@@ -149,4 +149,7 @@ The magic number is 42
 PS>'It is not $var'
 It is not $var
 
+- First, we define a variable with the value 42 to insert into a string. Then we create a double-quoted string with the variable name inside it. The result is the string with the variable name replaced by its value formatted as a string. 
+- If you want more control over the formatting, you can use the string formatter operator -f.
+- To demonstrate the difference behavior of a single-quoted string, we define one of these with the variable name inline. We can observe that in this case the variable name is copied verbatim and is not replaced by the value.
 
