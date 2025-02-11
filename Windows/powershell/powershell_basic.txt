@@ -245,4 +245,66 @@ ffffffff-ffff-ffff-ffff-ffffffffffff
 ------------------
 
 [Executing Commands]
+- Almost all commands in PowerShell are named using a common patter: a verb and a noun, separated by a dash. 
+For example, consider the command Get-Item. The Get verb implies retrieving an existing resource, while Item is the type of resource to return. 
+- Each command can accept a list of parameters that controls the behavior of the command. 
+For example, the Get-Item command accepts a Path parameter that indicates the exisitng resource to retrieve, as shown here:
+--------------
+PS C:\Users\Null> GEt-Item -Path "C:\Windows"
 
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/11/2025  11:20 AM                Windows
+----------------
+
+- The Path parameter is a positional parameter. This means that you can omit the name of the parameter, and the PowerShell will do its best to select 
+the best match. So the previous command can also be written as the following:
+-------------
+PS C:\Users\Null> Get-Item "C:\Windows"
+
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/11/2025  11:20 AM                Windows
+
+--------------------
+
+- If a parameter takes a string value, and the string does not contain any special characters or whitepsace, then you do not need to use 
+quotes around the string. For example, the Get-Item command would also work with the following:
+---------------------------
+PS C:\Users\Null> Get-Item c:\Windows
+
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/11/2025  11:20 AM                Windows
+--------------------------
+
+- The output of a single command is zero or more values, which can be basic or complex object types. 
+You can pass the output of one command to another as input using a pipeline, which is represented by
+a vertical bar character, |. 
+
+- You can capture the result of an entire command or pipeline into a variable, then interact with the results. 
+For example, the following captures the result of the Get-Item command and queries for the FullName property:
+-----------
+PS C:\Users\Null> $var = Get-Item -Path "C:\Windows"
+PS C:\Users\Null> $var.FullName
+C:\Windows
+-------------
+- If you don't want to capture the result in a variable, you can enclose the command in parentheses and 
+directly access its properties and methods:
+-------------
+PS C:\Users\Null> (Get-Item -Path "C:\Windows").FullName
+C:\Windows
+-------------
+- The length of a command line is effectively infinite. 
