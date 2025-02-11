@@ -12,16 +12,19 @@ PS C:\> Get-ExecutionPolicy
 Restricted
 
 - The restricted blocks all scripts from running unless they are signed with a trusted certificate. 
-- As the scripts in this book are unsigned, we'll change the execution policy to RemoteSigned. This execution policy allows us to run unsigned PowerShell scripts if they're created locally but will not allow us to execute unsigned scripts downloaded in a web browser or attached to emails. 
+- As the scripts in this book are unsigned, we'll change the execution policy to RemoteSigned. This execution policy allows us to run unsigned PowerShell scripts if they're created locally
+but will not allow us to execute unsigned scripts downloaded in a web browser or attached to emails. 
 
 - Run the following command to set the execution policy: 
 PS C:\> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 PS C:\> Get-ExecutionPolicy
 RemoteSigned
-- The above command changes the execution policy for the current user only, not the entire system. If you want to change it for all users, you'll need to start PowerShell as an administrator and then rerun the command, removing the Scope parameter. 
+- The above command changes the execution policy for the current user only, not the entire system. If you want to change it for all users, 
+you'll need to start PowerShell as an administrator and then rerun the command, removing the Scope parameter. 
 PS C:\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 
-- If you're using the open source version of PowerShell or version 5.1 on Windows Server, then the default script execution policy is RemoteSigned and you donot have to change anything. Here are the commands to query PowerShell version 
+- If you're using the open source version of PowerShell or version 5.1 on Windows Server, 
+then the default script execution policy is RemoteSigned and you donot have to change anything. Here are the commands to query PowerShell version 
 PS C:\> GET-Host
 
 Name             : ConsoleHost
@@ -56,10 +59,13 @@ PSRemotingProtocolVersion      2.3
 SerializationVersion           1.1.0.1
 
 - Now that we can run unsigned scripts, we can install the PowerShell module we'll be using for this book. 
-- A PowerShell module is a package of scripts and .NET binaries that export PowerShell commands. Every installation of PowerShell comes preinstalled with several modules for tasks ranging from configuring your applications to setting up Windows Update. You can install a module manually by copying its files, but the easier approach is to use the PowerShell Gallery (https://www.powershellgallery.com), an online repository of modules.
+- A PowerShell module is a package of scripts and .NET binaries that export PowerShell commands. 
+Every installation of PowerShell comes preinstalled with several modules for tasks ranging from configuring your applications to setting up Windows Update. 
+You can install a module manually by copying its files, but the easier approach is to use the PowerShell Gallery (https://www.powershellgallery.com), an online repository of modules.
 
 [[Install A PowerShell Module]]
-- To install a module from the PowerShell Gallery, we use PowerShell's Install-Module command. For this book, we'll need to install the NtObjectManager module, which we can do using the following command:
+- To install a module from the PowerShell Gallery, we use PowerShell's Install-Module command. 
+For this book, we'll need to install the NtObjectManager module, which we can do using the following command:
 
 PS C:\> Install-Module NtObjectManager -Scope CurrentUser -Force
 
@@ -110,7 +116,8 @@ bool            System.Boolean               $true, $false
 array           System.Object[]              @(1, "ABC", $true)
 hashtable       System.Collections.Hashtable    @{A=1; B="ABC"}
 
-- To perform calculations on basic types, we can use well-known operators such as +, -, *, and /. These operators can be overloaded; for example, + is used for addition as well as for concatenating strings and arrays. 
+- To perform calculations on basic types, we can use well-known operators such as +, -, *, and /. These operators can be overloaded; 
+for example, + is used for addition as well as for concatenating strings and arrays. 
 - The following provides a list of common operators, with simple examples and their results.
 Operator        Name                        Examples                        Results
 +               Addition or concatenation   1 + 2, "Hello" + "World!"       3, "HelloWorld!"
@@ -132,7 +139,8 @@ Operator        Name                        Examples                        Resu
 -lt             Less than                    4 -lt 10                        $true
 -gt             Greater than                 4 -gt 10                        $false
 
-- You can assign values to variables using the assignment operator, =. E.g., $x = 45. A variable has an alphanumeric name prefixed with the $ character. For example, the following example shows how you can capture an array in a variable and use the indexing operator to look up a value. 
+- You can assign values to variables using the assignment operator, =. E.g., $x = 45. A variable has an alphanumeric name prefixed with the $ character. 
+For example, the following example shows how you can capture an array in a variable and use the indexing operator to look up a value. 
 - PS> $var = 3, 2, 1, 0
 - PS> $var[1] 
   2
@@ -157,5 +165,84 @@ It is not $var
 
 - First, we define a variable with the value 42 to insert into a string. Then we create a double-quoted string with the variable name inside it. The result is the string with the variable name replaced by its value formatted as a string. 
 - If you want more control over the formatting, you can use the string formatter operator -f.
-- To demonstrate the difference behavior of a single-quoted string, we define one of these with the variable name inline. We can observe that in this case the variable name is copied verbatim and is not replaced by the value.
+- To demonstrate the difference behavior of a single-quoted string, we define one of these with the variable name inline.
+We can observe that in this case the variable name is copied verbatim and is not replaced by the value.
+- Another difference is that a double-quoted string can contain character escapes that are ignored in single-quoted strings. 
+These escapes use a similar syntax to those of the C programming language, but instead of a backslash character (\) 
+PowerShell used the backtick(`). This is because Windows uses the backslash as a path separator, and writing out filepaths 
+would be very annoying if you had to escape every backslash. 
+
+Table 1-3: String Character Escapes
+===================================
+Character escape                Name
+`0                            NUL character, with a value of zero
+`a                            Bell
+`b                            Backspace
+`n                            Line feed
+`r                            Carriage return 
+`t                            Horizontal tab
+`v                            Vertical tab 
+``                            Backtick character 
+`"                            Double quote character 
+
+- If you want to insert a double quote character into a double-quoted string, you'll need to use the `" escape. 
+- To insert a single quote into a single-quoted string, you double the quote character: for example, 'Hello''There' would convert to Hello'There. 
+
+Note also the mention of a NUL character in this table. As PowerShell uses the .NET string type, it can contain embedded NUL characters. Unlike in the C language, 
+adding a NUL will not terminate the string prematurely. 
+
+- Because all values are .NET types, we can invoke methods and access properties on an object. 
+For example, the following calls the ToCharArray method on a string to convert it to an array of single characters. 
+--------------
+PS C:\Users\Null> "Hello".TocharArray()
+H
+e
+l
+l
+o
+----------------
+- We can use PowerShell to construct almost any .NET type. The simplest way to do this is to case a value to that type by specifying the .NET type in 
+square brackets. When casting, PowerShell will try to find a suitable constructor for the type to invoke. 
+
+For example, the following command will convert a string to a System.Guid object; PowerShell will find a constructor that accepts a string and call it:
+---------------------
+PS C:\Users\Null> [System.GUID]"ffffffff-ffff-ffff-ffff-ffffffffffff"
+
+Guid
+----
+ffffffff-ffff-ffff-ffff-ffffffffffff
+
+PS C:\Users\Null> [System.Guid]::new("ffffffff-ffff-ffff-ffff-ffffffffffff")
+
+Guid
+----
+ffffffff-ffff-ffff-ffff-ffffffffffff
+----------------------
+
+This syntax can also be used to invoke static methods on the type. 
+For example, the following calls the NewGuid static method to create a new random globally unique identifier (GUID):
+------------------
+PS C:\Users\Null> [System.Guid]::newGuid()
+
+Guid
+----
+ec6770f0-a99e-472a-9da2-cec43aa16f84
+
+
+PS C:\Users\Null> [System.Guid]::newGuid()
+
+Guid
+----
+179f365e-0941-4f13-b50c-68df969552c8
+------------------
+- You can create new objects too, using the New-Object command:
+-----------------
+PS C:\Users\Null> New-Object -TypeName Guid -ArgumentList "ffffffff-ffff-ffff-ffff-ffffffffffff"
+
+Guid
+----
+ffffffff-ffff-ffff-ffff-ffffffffffff
+------------------
+
+[Executing Commands]
 
