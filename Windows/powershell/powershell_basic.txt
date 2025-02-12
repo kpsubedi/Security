@@ -483,7 +483,38 @@ REMARKS
 ------------------------
 Listing 1-6: Displaying help for the Start-NtWait command
 
-- By default, 
+- By default, Get-Help outputs the 
+1. the name of the command
+2. a short synopsis
+3. the syntax of the command
+4. a more in-depth description.
+- In the command syntax section, you can see its multiple possible modes of operation: in this case, 
+either specifying a time in hours, minutes, seconds, and/or milliseconds, or specifying Infinite to wait
+indefinitely. 
+- When any part of the syntax is shown in brackets, [], that mean it's optional. For example, the only required 
+parameter is Object, which takes an array of NtObject values. Even the name of this parameter is optional, as 
+-Object is in brackets. 
+
+- You can get more information about a parameter by using the Parameter command. Listing 1-7 shows the details for the Object parameter. 
+----------------------
+PS C:\Users\Null> Get-Help Start-NtWait -Parameter Object
+
+-Object <NtObject[]>
+    Specify a list of objects to wait on.
+
+    Required?                    true
+    Position?                    0
+    Default value
+    Accept pipeline input?       true (ByValue)
+    Accept wildcard characters?  false
+----------------------
+Listing 1-7: Querying the details of the Object parameter with the Parameter command
+
+- You can use wildcard syntax to select a group of similar parameter names. For example, if you 
+specify Obj*, then you'll get information about any parameters whose names start with the Obj prefix.
+
+- If you want usage examples for a commmand, use the Examples parameter as demonstrated in Listing 1-8.
+
 -------------------------
 PS C:\Users\Null> Get-Help Start-NtWait -examples
 
@@ -519,6 +550,8 @@ SYNOPSIS
 
     Get a list of events and wait 100 seconds for all events to be signaled.
 -------------------------------
+Listing 1-8: showing examples for Start-NtWait
 
+- Each 
 
 
