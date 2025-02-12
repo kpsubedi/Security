@@ -421,4 +421,104 @@ Function        Edit-NtSecurityDescriptor                          2.0.1      Nt
 ------------------------------
 Listing 1-4: Using Get-Command to enumerate commands
 
-- This command uses wildcard syntax to list only commands whose names 
+- This command uses wildcard syntax to list only commands whose names include the specified word. Wildcard syntax uses a * character to 
+represent any character or series of characters. Here, we've put the * on both sides of SecurityDescriptor to indicate that any text can 
+come before or after it. 
+
+- You can also list the commands available in a module. For example, Listing 1-5 will list only the commands that are exported by the 
+NtObjectManager module and begin with the verb Start.
+----------------------------
+PS C:\Users\Null> Get-Command -Module NtObjectManager -Name Start-*
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Start-AccessibleScheduledTask                      2.0.1      NtObjectManager
+Function        Start-AppModelApplication                          2.0.1      NtObjectManager
+Function        Start-FwNetEventListener                           2.0.1      NtObjectManager
+Function        Start-NtFileOplock                                 2.0.1      NtObjectManager
+Function        Start-Win32ChildProcess                            2.0.1      NtObjectManager
+Function        Start-Win32DebugConsole                            2.0.1      NtObjectManager
+Function        Start-Win32Service                                 2.0.1      NtObjectManager
+Cmdlet          Start-NtDebugWait                                  2.0.1      NtObjectManager
+Cmdlet          Start-NtWait                                       2.0.1      NtObjectManager
+------------------------------
+Listing 1-5: Using Get-Command to enumerate commands in the NtObjectManager module
+
+- Once you've found a command that looks promising, you can use the Get-Help command to inspect its parameters and get some usage 
+examples. 
+In Listing 1-6, we take the Start-NtWait command from Listing 1-5 and pass it to Get-Help. 
+-------------------------
+PS C:\Users\Null> Get-Help Start-NtWait
+
+NAME
+    Start-NtWait
+
+SYNOPSIS
+    Wait on one or more NT objects to become signaled.
+
+
+SYNTAX
+    Start-NtWait [-Object] <NtObject[]> [-Alertable <SwitchParameter>] [-Hour <int>] [-MilliSecond <long>] [-Minute <int>]
+    [-Second <int>] [-WaitAll <SwitchParameter>] [<CommonParameters>]
+
+    Start-NtWait [-Object] <NtObject[]> [-Alertable <SwitchParameter>] [-Infinite <SwitchParameter>] [-WaitAll <SwitchParameter>]
+    [<CommonParameters>]
+
+
+DESCRIPTION
+    This cmdlet allows you to issue a wait on one or more NT objects until they become signaled. This is used for example to
+    acquire a Mutant, decrement a Semaphore or wait for a Process to exit. The timeout value is a combination of all the allowed
+    time parameters, e.g. if you specify 1 second and 1000 milliseconds it will wait 2 seconds in total. Specifying -Infinite
+    overrides the time parameters and will wait indefinitely.
+
+
+RELATED LINKS
+    about_ManagingNtObjectLifetime
+
+REMARKS
+    To see the examples, type: "get-help Start-NtWait -examples".
+    For more information, type: "get-help Start-NtWait -detailed".
+    For technical information, type: "get-help Start-NtWait -full".
+    For online help, type: "get-help Start-NtWait -online"
+------------------------
+Listing 1-6: Displaying help for the Start-NtWait command
+
+- By default, 
+-------------------------
+PS C:\Users\Null> Get-Help Start-NtWait -examples
+
+NAME
+    Start-NtWait
+
+SYNOPSIS
+    Wait on one or more NT objects to become signaled.
+
+
+    ----------  EXAMPLE 1  ----------
+
+    $ev = Get-NtEvent \BaseNamedObjects\ABC
+    Start-NtWait $ev -Second 10
+
+    Get an event and wait for 10 seconds for it to be signaled.
+    ----------  EXAMPLE 2  ----------
+
+    $ev = Get-NtEvent \BaseNamedObjects\ABC
+    $ev | Start-NtWait -Infinite
+
+    Get an event and wait indefinitely for it to be signaled.
+    ----------  EXAMPLE 3  ----------
+
+    $ev = Get-NtEvent \BaseNamedObjects\ABC
+    $ev | Start-NtWait -Infinite -Alertable
+
+    Get an event and wait indefinitely for it to be signaled or alerted.
+    ----------  EXAMPLE 4  ----------
+
+    $evs = @($ev1, $ev2)$
+    Start-NtWait $evs -WaitAll -Second 100
+
+    Get a list of events and wait 100 seconds for all events to be signaled.
+-------------------------------
+
+
+
