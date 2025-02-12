@@ -592,6 +592,25 @@ At line:1 char:1
 ---------------
 
 [Defining Functions]
+- As with all programming languages, it pays to reduce complexity in PowerShell. One way to reducing complexity is to combine common code into a function. 
+Once a function is defined, the PowerShell script can call the function rather than needing to repeat the same code in multiple places. 
+
+- The basic function syntax in PowerShell is simple; Listing 1-9 shows an example. 
+-------------------
+PS C:\Users\Null> function Get-NameValue {
+>> param([string]$NAme = "",
+>> $value)
+>> return "We've got $Name with Value $Value"
+>> }
+------------------
+[Calling a Function]
+
+PS C:\Users\Null> GEt-NameValue -NAme "Hello" -Value "World"
+We've got Hello with Value World
+PS C:\Users\Null> GEt-NameValue -NAme "Hello" -Value 12345
+We've got Hello with Value 12345
+PS C:\Users\Null>
+-------------------
 
 
 
