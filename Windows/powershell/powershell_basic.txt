@@ -552,6 +552,47 @@ SYNOPSIS
 -------------------------------
 Listing 1-8: showing examples for Start-NtWait
 
-- Each 
+- Each example should include a one- or two-line snippet of a PowerShell script and a description of what it does. You can also see the full help 
+output for the command by specifying the Full parameter. To view this output in a separate pop-up window, use the ShowWindow parameter. For example,
+try running this command:
+----------------
+PS C:\Users\Null> Get-Help Start-NtWait -ShowWindow
+-----------------
+
+- One final topic to mention about commands is that you can set up aliases, or alternative names for the commands. For example, you can use an alias to 
+make commands shorter to type. PowerShell comes with many aliases predefined, and you can define your own using the New-Alias command.
+- To display a list of all the defined aliases, use the Get-Alias command. 
+
+-----------------
+PS C:\Users\Null> Get-Alias
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           % -> ForEach-Object
+Alias           ? -> Where-Object
+Alias           ac -> Add-Content
+Alias           asnp -> Add-PSSnapin
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           CFS -> ConvertFrom-String                          3.1.0.0    Microsoft.PowerShell.Utility
+.........
+---------------------------------------
+Listing 1-9: showing examples for Get-Alias
+
+- For example, we can set the Start-NtWait command to have the alias swt by doing the following:
+--------------
+PS C:\Users\Null> New-Alias -Name swt -Value Start-NtWait
+PS C:\Users\Null> swt
+Start-NtWait : Parameter set cannot be resolved using the specified named parameters.
+At line:1 char:1
++ swt
++ ~~~
+    + CategoryInfo          : InvalidArgument: (:) [Start-NtWait], ParameterBindingException
+    + FullyQualifiedErrorId : AmbiguousParameterSet,NtObjectManager.Cmdlets.Object.StartNtWaitCmdlet
+---------------
+
+[Defining Functions]
+
+
 
 
