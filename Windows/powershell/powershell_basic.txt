@@ -374,4 +374,31 @@ Alias           fhx -> Format-Hex                                  3.1.0.0    Mi
 Alias           fimo -> Find-Module                                1.0.0.1    PowerShellGet
 ---------------------
 
+- To help, you can use two built-in commands, Get-Command and Get-Help.
+-----------------
+PS C:\Users\Null> Get-Command
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           Add-AppPackage                                     2.0.1.0    Appx
+Alias           Add-AppPackageVolume                               2.0.1.0    Appx
+Alias           Add-AppProvisionedPackage                          3.0        Dism
+Alias           Add-MsixPackage                                    2.0.1.0    Appx
+Alias           Add-MsixPackageVolume                              2.0.1.0    Appx
+....
+-------------------
+PS C:\Users\Null> Get-Help
+
+TOPIC
+    Windows PowerShell Help System
+
+SHORT DESCRIPTION
+    Displays help about Windows PowerShell cmdlets and concepts.
+
+LONG DESCRIPTION
+    Windows PowerShell Help describes Windows PowerShell cmdlets,
+    functions, scripts, and modules, and explains concepts, including
+    the elements of the Windows PowerShell language.
+......
+-------------------------
 
