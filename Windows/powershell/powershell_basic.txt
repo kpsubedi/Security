@@ -307,4 +307,71 @@ directly access its properties and methods:
 PS C:\Users\Null> (Get-Item -Path "C:\Windows").FullName
 C:\Windows
 -------------
-- The length of a command line is effectively infinite. 
+- The length of a command line is effectively infinite. However, you'll want to try to split up long lines to make the 
+commands more readable. The shell will automatically split a line on the pipe character. If you need to split a long 
+line with no pipes, you can use the backtick (`) character, then start a new line. The backtick must be the last character on the 
+line; otherwise, an error will occur when the script is parsed.
+----------------
+PS C:\Users\Null> GEt-item `
+>> C:\Windows
+
+
+    Directory: C:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/11/2025  11:20 AM                Windows
+-----------------------------------
+
+[Discovering Commands and Getting Help]
+- A default installation of PowerShell has hundreds of commands to choose from. This means that finding a command to perform a specific task can be 
+difficult, and even if you find the command, it might not be clear how to use it.
+For example, Get-Alias is the useful command to find common commands.
+-------------------------------
+PS C:\Users\Null> Get-Alias
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Alias           % -> ForEach-Object
+Alias           ? -> Where-Object
+Alias           ac -> Add-Content
+Alias           asnp -> Add-PSSnapin
+Alias           cat -> Get-Content
+Alias           cd -> Set-Location
+Alias           CFS -> ConvertFrom-String                          3.1.0.0    Microsoft.PowerShell.Utility
+Alias           chdir -> Set-Location
+Alias           clc -> Clear-Content
+Alias           clear -> Clear-Host
+Alias           clhy -> Clear-History
+Alias           cli -> Clear-Item
+Alias           clp -> Clear-ItemProperty
+Alias           cls -> Clear-Host
+Alias           clv -> Clear-Variable
+Alias           cnsn -> Connect-PSSession
+Alias           compare -> Compare-Object
+Alias           copy -> Copy-Item
+Alias           cp -> Copy-Item
+Alias           cpi -> Copy-Item
+Alias           cpp -> Copy-ItemProperty
+Alias           curl -> Invoke-WebRequest
+Alias           cvpa -> Convert-Path
+Alias           dbp -> Disable-PSBreakpoint
+Alias           del -> Remove-Item
+Alias           diff -> Compare-Object
+Alias           dir -> Get-ChildItem
+Alias           dnsn -> Disconnect-PSSession
+Alias           ebp -> Enable-PSBreakpoint
+Alias           echo -> Write-Output
+Alias           epal -> Export-Alias
+Alias           epcsv -> Export-Csv
+Alias           epsn -> Export-PSSession
+Alias           erase -> Remove-Item
+Alias           etsn -> Enter-PSSession
+Alias           exsn -> Exit-PSSession
+Alias           fc -> Format-Custom
+Alias           fhx -> Format-Hex                                  3.1.0.0    Microsoft.PowerShell.Utility
+Alias           fimo -> Find-Module                                1.0.0.1    PowerShellGet
+---------------------
+
+
