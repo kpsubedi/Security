@@ -401,4 +401,24 @@ LONG DESCRIPTION
     the elements of the Windows PowerShell language.
 ......
 -------------------------
+- The Get-Command command can be used to enumerate all the commands available to you. 
+In its simplest form, you can execute it without any parameters and it will print all commands from all modules. 
+However, it's probably more useful to filter on a specific word you're interested in. 
+For example, Listing 1-4 will list only the commands with the word SecurityDescriptor in their names.
 
+------------------------
+PS C:\Users\Null> Get-Command -Name *SecurityDescriptor*
+
+CommandType     Name                                               Version    Source
+-----------     ----                                               -------    ------
+Function        Add-NtSecurityDescriptorControl                    2.0.1      NtObjectManager
+Function        Clear-NtSecurityDescriptorDacl                     2.0.1      NtObjectManager
+Function        Clear-NtSecurityDescriptorSacl                     2.0.1      NtObjectManager
+Function        ConvertFrom-NtSecurityDescriptor                   2.0.1      NtObjectManager
+Function        Copy-NtSecurityDescriptor                          2.0.1      NtObjectManager
+Function        Edit-NtSecurityDescriptor                          2.0.1      NtObjectManager
+.....
+------------------------------
+Listing 1-4: Using Get-Command to enumerate commands
+
+- This command uses wildcard syntax to list only commands whose names 
