@@ -611,7 +611,9 @@ PS C:\Users\Null> GEt-NameValue -NAme "Hello" -Value 12345
 We've got Hello with Value 12345
 PS C:\Users\Null>
 -------------------
+Listing 1-9: Defining a simple PowerShell function called Get-NameValue
 
+- The syntax for defining a function starts with the keyword function followed by the name of the function you want to define.
 
 
 
