@@ -105,7 +105,7 @@ NONE  NONE           NONE           NONE
 [[An Overview of the PowerShell Language]]
 
 [[[Understanding Types, Variables, and Expressions]]]
-
+#####################################################
 - PowerShell supports many different data types, from basic integers and strings to complex objects. The following shows some of the most common built-in types:
 Type            .Net type                    Examples
 int             System.Int32                142, 0x8E, 0216
