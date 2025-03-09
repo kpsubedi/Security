@@ -1,6 +1,6 @@
 The core architectural difference between Linux and Windows:
 - Linux is a file-oriented operating system, while
-- Windows is API oriented, and though APIs can provide a much reacher set of capabilities, they come at the expense of simplicity. 
+- Windows is API oriented, and though APIs can provide a much richer set of capabilities, they come at the expense of simplicity. 
 
 PowerShell is an API-oriented command line interface and scripting tool. 
 
