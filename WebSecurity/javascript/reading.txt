@@ -1,1 +1,6 @@
 [Reading]
+[[JavaScript for Hackers: Learn To Think Like A Hacker]]
+1: Chapter one - Introduction
+  1.1: Environment 
+    
+
