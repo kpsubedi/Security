@@ -1,3 +1,7 @@
+[SQL Injection]
+* https://www.youtube.com/watch?v=tkhBE8GrzoE
+
+
 [Moving Target of Product Security]
 * AppSec
 * Cloud Security 
