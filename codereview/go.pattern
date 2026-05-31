@@ -1,0 +1,11 @@
+#
+grep -Rnw "exec.Command" . --color
+grep -Rnw "http.Get" . --color
+grep -Rnw "http.Post" . --color
+grep -Rnw "json.Unmarshal" . --color
+grep -Rnw "xml.Unmarshal" . --color
+grep -Rnw "db.Query" . --color
+grep -Rnw "db.Exec" . --color
+grep -Rnw "template.Execute" . --color
+grep -Rnw "unsafe." . --color
+grep -Rnw "jwt.Parse" . --color
