@@ -1,0 +1,31 @@
+# High-value python code review
+
+grep -Rn "eval(" .
+grep -Rn "exec(" .
+grep -Rn "compile(" .
+grep -Rn "pickle.load" .
+grep -Rn "pickle.loads" .
+grep -Rn "yaml.load" .
+grep -Rn "subprocess." .
+grep -Rn "os.system" .
+grep -Rn "popen" .
+grep -Rn "shell=True" .
+grep -Rn "requests.get" .
+grep -Rn "requests.post" .
+grep -Rn "urllib.request" .
+grep -Rn "open(" .
+grep -Rn "send_file" .
+grep -Rn "send_from_directory" .
+grep -Rn "render_template_string" .
+grep -Rn "mark_safe" .
+grep -Rn "csrf_exempt" .
+grep -Rn "verify=False" .
+grep -Rn "jwt.decode" .
+grep -Rn "SECRET_KEY" .
+grep -Rn "PASSWORD" .
+grep -Rn "TOKEN" .
+grep -Rn "DEBUG = True" .
+grep -Rn "cursor.execute" .
+grep -Rn ".raw(" .
+grep -Rn "extra(" .
+
