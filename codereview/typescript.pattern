@@ -1,0 +1,33 @@
+#
+grep -Rnw "eval(" . --color
+grep -Rnw "Function(" . --color
+grep -Rnw "child_process" . --color
+grep -Rnw "exec(" . --color
+grep -Rnw "execSync(" . --color
+grep -Rnw "spawn(" . --color
+grep -Rnw "shell: true" . --color
+grep -Rnw "fs.readFile" . --color
+grep -Rnw "fs.writeFile" . --color
+grep -Rnw "fs.unlink" . --color
+grep -Rnw "path.join" . --color
+grep -Rnw "axios.get" . --color
+grep -Rnw "fetch(" . --color
+grep -Rnw "request(" . --color
+grep -Rnw "jwt.decode" . --color
+grep -Rnw "jwt.verify" . --color
+grep -Rnw "JSON.parse" . --color
+grep -Rnw "innerHTML" . --color
+grep -Rnw "dangerouslySetInnerHTML" . --color
+grep -Rnw "document.write" . --color
+grep -Rnw "localStorage" . --color
+grep -Rnw "sessionStorage" . --color
+grep -Rnw "res.send" . --color
+grep -Rnw "res.render" . --color
+grep -Rnw "res.redirect" . --color
+grep -Rnw "cors(" . --color
+grep -Rnw "origin: '*'" . --color
+grep -Rnw "csrf" . --color
+grep -Rnw "query(" . --color
+grep -Rnw "raw(" . --color
+grep -Rnw "where(" . --color
+grep -Rnw "process.env" . --color
