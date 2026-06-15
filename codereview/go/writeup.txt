@@ -1,4 +1,5 @@
 Golang Security Review Guide
+https://dev.to/marscode/golang-security-review-guide-4kk5
 #
 go
 Written by Abdullah Al-Sultani
