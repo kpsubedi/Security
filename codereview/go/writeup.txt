@@ -1,0 +1,830 @@
+Golang Security Review Guide
+#
+go
+Written by Abdullah Al-Sultani
+Linkedin:Abdullah Al-Sultani
+Mailbox📮:abdullah@alsultani.me
+
+Go is a statically typed, compiled high-level programming language designed at Google. It is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. Most of our apps and backend rely on Golang. Therefore, we found it important to document the review process for such applications. The checklist of this article can be found at the end of the page.
+
+First things first
+Go by Example
+
+Go related
+In golang, the library net/http usually transforms the path to a canonical one before accessing it:
+/flag/ -- Is responded with a redirect to /flag
+/../flag --- Is responded with a redirect to /flag
+/flag/. -- Is responded with a redirect to /flag
+If the CONNECT method is used, this doesn't happen. So, if you need to access some protected resource, you can abuse this trick: curl --path-as-is -X CONNECT http://hack.me/../flag
+go =< 1.15 has an issue with Range header that can be exploited in some contexts https://github.com/golang/go/issues/40940
+When go parses a JSON response, it sets the non-existent fields that are defined as strings as empty strings instead of nil.
+What you are looking for
+Vulnerable 3rd-Party Modules
+You can use https://docs.snyk.io/getting-started/quickstart
+Simply running snyk test on a Go application will parse your modules and report back any known CVEs, as well as info about any fixed versions of them that you can upgrade to.
+
+RCE - Remote Code Execution
+Command injection occurs when the user input gets executed on the server as system command. For instance, look at the following code:
+
+binary, lookErr := exec.LookPath("sh")
+  if lookErr != nil {
+      panic(lookErr)
+}
+env := os.Environ()
+args := []string{"sh", "-c", req.FormValue("name")}
+execErr := syscall.Exec(binary, args, env)
+if execErr != nil {
+    panic(execErr)
+}
+Most of the time, the application gets user input through forms. The code above receives the name value from a form and passes it to the dangerous function syscall.Exec which will execute the command on the server. However, when the developer expects a name, the attacker can submit something like
+John & whoami > /var/www/static/whoami.txt
+This command will store the output of whoami in whoami.txt in the static folder. Golang offers many to execute commands to list a few of them:
+
+exec.Command()
+exec.CommandContext()
+syscall.Exec()
+os.StartProcess()
+exec.Cmd()
+Getting any user controlled input inside these functions directly without validating is extremely dangerous. Make sure to filter the input or use allow-list the commands that want to be executed like the following:
+
+type OSProgram uint64
+
+const (
+    LS OSProgram = iota
+    Cat
+    Echo
+    Grep
+)
+
+func CallOSCommand(program OSProgram, args ...string) {
+    switch program {
+    case LS:
+        exec.Command("ls", args...)
+    case Cat:
+        exec.Command("cat", args...)
+    case Echo:
+        exec.Command("echo", args...)
+    case Grep:
+        exec.Command("grep", args...)
+  }
+}
+SQL Injection
+Sql injection occurs when user input is being inserted into the sql query without filtering or sanitizing. The root cause of this issue is old practice, which is string concatenation.
+
+ctx := context.Background() 
+customerId := r.URL.Query().Get("id") 
+query := "SELECT number, cvv FROM creditcards WHERE customerId = " + customerId 
+row, _ := db.QueryContext(ctx, query)
+As you can notice, the customerId is user-supplied input. And it is being added to the query without any filteration. What if an attacker submits customerId as 1 or 1=1?
+The sql query will become:
+
+SELECT number, cvv FROM creditcards WHERE customerId = 1 or 1=1
+This will dump the full table records since 1 or 1=1 is always true. The solution for this issue is called Prepared Statments. The safe code will look like this:
+
+ctx := context.Background() 
+customerId := r.URL.Query().Get("id") 
+query := "SELECT number, expireDate, cvv FROM creditcards WHERE customerId = ?" 
+stmt, _ := db.QueryContext(ctx, query, customerId)  
+Notice the placeholder ? . Your query is now:
+
+Readable
+Safe
+And short
+The placeholder syntax is database-specific. You may see the following syntaxes depending on the project requirements:
+
+MySQL
+WHERE col = ?
+VALUES(?, ?, ?)
+
+PostgreSQL
+WHERE col = $1
+VALUES($1, $2, $3)
+
+Oracle
+WHERE col = :col
+VALUES(:val1, :val2, :val3)
+
+❗️GORM can cause SQL injection even if the prepare statement is being used. If you pass string parameters to numerical IDs, for example,
+
+userInput := "jinzhu;drop table users;"
+
+// safe, will be escaped
+db.Where("name = ?", userInput).First(&user)
+
+// SQL injection
+db.Where(fmt.Sprintf("name = %v", userInput)).First(&user)
+
+// will be escaped
+db.First(&user, "name = ?", userInput)
+
+// SQL injection
+db.First(&user, fmt.Sprintf("name = %v", userInput))
+
+userInputID := "1=1;drop table users;"
+// safe, return error
+id,err := strconv.Atoi(userInputID)
+if err != nil {
+    return error
+}
+db.First(&user, id)
+
+// SQL injection
+db.First(&user, userInputID)
+// SELECT * FROM users WHERE 1=1;drop table users;
+
+// SQL injection
+db.Select("name; drop table users;").First(&user)
+db.Distinct("name; drop table users;").First(&user)
+db.Model(&user).Pluck("name; drop table users;", &names)
+db.Group("name; drop table users;").First(&user)
+db.Group("name").Having("1 = 1;drop table users;").First(&user)
+db.Raw("select name from users; drop table users;").First(&user)
+db.Exec("select name from users; drop table users;")
+db.Order("name; drop table users;").First(&user)
+String concatenation functions and methods
+
+💡Always take a deep look when reviewing string concatenation process inside a function. Most of the time, developer forgets about possible security issues. Whenever you see non-standard SQL query generator there is a possibility of SQL injection.
+
+Function/Method & Example：
+Plus operator：
+name := "A" + " " + "b" // A b
+String append:
+u := "This"
+v := " is working."
+u += v // sets u to "This is working."
+Join() function:
+s := []string{"This", "is", "a", "string."}
+v := strings.Join(s, " ")
+fmt.Println(v) // This is a string.
+Sprintf() method:
+s1 := "abc"
+s2 := "xyz"
+v := fmt.Sprintf("%s%s", s1, s2)
+fmt.Println(v) // abcxyz
+Bytes buffer method:
+var b bytes.Buffer
+b.WriteString("abc")
+b.WriteString("def") // append
+fmt.Println(b.String()) // abcdef
+Strings builder method:
+var sb strings.Builder
+sb.WriteString("First")
+sb.WriteString("Second")
+fmt.Println(sb.String()) // FirstSecond
+Repeat() Method:
+fmt.Println(strings.Repeat("abc", 3)) // abcabcabc
+
+Real life case
+Our colleague Anton found an interesting SQL injection vulnerability in the well known SQL library. As we stated before, the root cause of the issue was insecure string concatenation.
+The vulnerable code was in gen_sql.go which is used to generate the SQL query, the vulnerable snippet:
+
+switch c.value.(type) {
+        case []interface{}:
+                s := []string{}
+                tempInter := c.value.([]interface{})
+                if len(c.value.([]interface{})) == 0 {
+                        return ""
+                }
+                if len(tempInter) == 0 {
+                        return ""
+                }
+                if len(tempInter) > LIST_LIMIT {
+                        tempInter = tempInter[:LIST_LIMIT]
+                }
+                for _, i := range tempInter {
+                        vv := fmt.Sprintf("%v", i)
+                        switch i.(type) {
+                        case string:
+                                vv = fmt.Sprintf("'%v'", i)
+                        }
+                        s = append(s, vv)
+                }
+                v = QuoteJoinString(s, "%v", ",")
+        case []string:
+                v = fmt.Sprintf("'%v'", c.value)
+
+The code does the following:
+
+It checks the data type of c
+Then, if it is an array of interface it appends the data (the string) to the query without escaping it.
+Similarly, for string data type.
+package main
+
+import (
+    "fmt"
+
+    "code.byted.org/dp/clickhouse_client_golang"
+)
+
+func main() {
+
+        userData := "test' or title = 'test" // user-controlled input 
+
+    sql := clickhouse_client_golang.NewSqlGenerator().
+        AddSelect("title").
+        From("table").
+        AddWhereCond(clickhouse_client_golang.NewCond("title = ?", []interface{}{userData})).
+        AddWhereCond(clickhouse_client_golang.NewCond("title = ?", userData)).
+        Sql()
+
+    fmt.Println(sql)
+}
+Basically, it will escape the AddWhereCond function prepare statement. It will generate the following query:
+
+select title from table where (title = 'test' or title = 'test') and (title = 'test' or title = 'test')
+XSS - Cross Site Scripting
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser-side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
+There are three types of XSS:
+Reflected XSS Attacks
+Reflected attacks are those where the injected script is reflected off the web server, such as in an error message, search result, or any other response that includes some or all of the input sent to the server as part of the request. Reflected attacks are delivered to victims via another route, such as in an e-mail message, or on some other website. When a user is tricked into clicking on a malicious link, submitting a specially crafted form, or even just browsing to a malicious site, the injected code travels to the vulnerable web site, which reflects the attack back to the user’s browser. The browser then executes the code because it came from a “trusted” server. Reflected XSS is also sometimes referred to as Non-Persistent or Type-I XSS (the attack is carried out through a single request / response cycle).
+Stored XSS Attacks
+Stored attacks are those where the injected script is permanently stored on the target servers, such as in a database, in a message forum, visitor log, comment field, etc. The victim then retrieves the malicious script from the server when it requests the stored information. Stored XSS is also sometimes referred to as Persistent or Type-II XSS.
+DOM XSS Attacks
+DOM Based XSS (or as it is called in some texts, “type-0 XSS”) is an XSS attack wherein the attack payload is executed as a result of modifying the DOM “environment” in the victim’s browser used by the original client side script, so that the client side code runs in an “unexpected” manner. That is, the page itself (the HTTP response that is) does not change, but the client side code contained in the page executes differently due to the malicious modifications that have occurred in the DOM environment. This is in contrast to other XSS attacks (stored or reflected), wherein the attack payload is placed in the response page (due to a server side flaw).
+The following code is vulnerable to Reflected XSS:
+
+package main 
+import "net/http" 
+import "io" 
+func handler (w http.ResponseWriter, r *http.Request) {
+    io.WriteString(w, r.URL.Query().Get("param1")) 
+} 
+func main () {
+    http.HandleFunc("/", handler) 
+    http.ListenAndServe(":8080", nil)
+} 
+As Content-Type HTTP response header is not explicitly defined, Go http.DetectContentType default value will be used, which follows MIME Sniffing standard. The io.WriteString will return the user input param1 as it is without filteration or sanitization. Going to http://127.0.0.1:8080/?param1=%3Cscript%3Ealert(1)%3C/script%3E will cause XSS.
+
+Image description
+Dangerous functions:
+
+template.HTML()
+template.HTMLAttr()
+template.CSS()
+template.JS()
+template.JSStr()
+template.Srcset()
+template.URL()
+fmt.Fprintf()
+io.WriteString()
+writer.Write()
+SSRF - Server Side Request Forgery
+If the application makes HTTP requests to URL provided by untrused source (such as user), and no protection is implemented, then it might be vulnerable to SSRF attacks. The attacker can send a request to the internal network or the server's localhost. The outcome can differ from one case to another. For example, an attacker can use the server to send requests to bypass certain firewall rules that mark the vulnerable server as trusted service.
+In Go, we can use the net/http package in order to help us make our own HTTP requests. Here are a few examples:
+http.X
+
+resp, err := http.Get("http://example.com/")
+...
+resp, err := http.Post("http://example.com/upload", "image/jpeg", &buf)
+...
+resp, err := http.PostForm("http://example.com/form",
+        url.Values{"key": {"Value"}, "id": {"123"}})
+
+For control over HTTP client headers, redirect policy, and other settings, create a Client:
+
+client := &http.Client{
+        CheckRedirect: redirectPolicyFunc,
+}
+
+resp, err := client.Get("http://example.com")
+// ...
+
+req, err := http.NewRequest("GET", "http://example.com", nil)
+// ...
+req.Header.Add("If-None-Match", `W/"wyzzy"`)
+resp, err := client.Do(req)
+// ...
+A vulnerable code snippet, the following code gets user input and passes it to http.Get directly:
+
+package main
+
+import (
+   "io/ioutil"
+   "log"
+   "net/http"
+)
+
+func main() {
+   userControllerd := "http://localhost:8000"
+   resp, err := http.Get(userControllerd)
+   if err != nil {
+      log.Fatalln(err)
+   }
+   //We Read the response body on the line below.
+   body, err := ioutil.ReadAll(resp.Body)
+   if err != nil {
+      log.Fatalln(err)
+   }
+   //Convert the body to type string
+   sb := string(body)
+   log.Printf(sb)
+}
+
+Fixing SSRF could be tricky. You need to validate the address before connecting to it. However, this must be done at a low layer to be effective to prevent DNS Rebinding attacks.
+
+File Inclusion
+The ability to read files on the server by accepting filename or file path from user-controlled input. The following function is vulnerable to this kind of attack.
+
+const ROOT string = "/path/to/root/%s"
+func getFileByName(file_name string) string { // fine_name is controlled by user 
+   path := fmt.Sprintf(ROOT, file_name)
+   buffer, err := ioutil.ReadFile(path)
+   if err != nil {
+      return name
+   }
+   return buffer
+}
+Since the file_name is controlled by user, it is possible to retrieve arbitrary files in the filesystems by the means of ../. For instance, getFileByName("../../../etc/passwd") can read the passwd file inside the linux machine. This results in the absolute path /path/to/root/../../../etc/passwd, and its canonicalized form /etc/passwd. To remediate vulnerability, the path variable can be safely built as follows:
+
+path := fmt.Sprintf(ROOT, path.Base(file_name))
+If the app uses path.Base or other checks before passing it to the ioutil.ReadFile it is considered to be secure unless the checks are insufficient or bypassable.
+
+filepath.Join()
+filepath.Clean()
+Demonstrated by several bug reports, filepath.Join() is a common culprit for directory traversal vulnerabilities. The reason might be that the documentation is a little misleading.
+Real life example
+A good example of this issue is CVE-2021-43798. Let's explore it.
+The vulnerable code was
+
+// /public/plugins/:pluginId/*
+func (hs *HTTPServer) getPluginAssets(c *models.ReqContext) {
+        pluginID := web.Params(c.Req)[":pluginId"]
+        plugin, exists := hs.pluginStore.Plugin(c.Req.Context(), pluginID)
+        if !exists {
+                c.JsonApiErr(404, "Plugin not found", nil)
+                return
+        }
+
+        requestedFile := filepath.Clean(web.Params(c.Req)["*"])
+        pluginFilePath := filepath.Join(plugin.PluginDir, requestedFile)
+
+        if !plugin.IncludedInSignature(requestedFile) {
+                hs.log.Warn("Access to requested plugin file will be forbidden in upcoming Grafana versions as the file "+
+                        "is not included in the plugin signature", "file", requestedFile)
+        }
+
+        // It's safe to ignore gosec warning G304 since we already clean the requested file path and subsequently
+        // use this with a prefix of the plugin's directory, which is set during plugin loading
+        // nolint:gosec
+        f, err := os.Open(pluginFilePath)
+        if err != nil {
+                if os.IsNotExist(err) {
+                        c.JsonApiErr(404, "Plugin file not found", err)
+                        return
+                }
+                c.JsonApiErr(500, "Could not open plugin file", err)
+                return
+        }
+        defer func() {
+                if err := f.Close(); err != nil {
+                        hs.log.Error("Failed to close file", "err", err)
+                }
+        }()
+        fi, err := f.Stat()
+        if err != nil {
+                c.JsonApiErr(500, "Plugin file exists but could not open", err)
+                return
+        }
+As we can see, the user-controlled value was being passed to filepath.Clean() function in order to clean it from ... However, it only does that (remove the traversal) when the value starts with a forward slash (/). Then, the value got passed to filepath.Join() which will normalize the path with the predefined plugin.PluginDir value. The attacker could use ../ to traverse the filesystem.
+*Exploit: *
+To read /etc/passwd content, you had to send the following request:
+curl --path-as-is http://localhost:3000/public/plugins/alertlist/../../../../../../../../etc/passwd
+
+XXE - XML External Entity
+Go is shipped with native XML parser encoding/xml that is not vulnerable to XXE. However, parse is used to mere XML parsing and manipulating. It doesn't come with advanced features like validation. Therefore, sometimes developers use third party libraries such as libxml2. Here is an example,
+
+// open the form file
+file, err := c.FormFile("xml")
+xml, err := file.Open()
+defer xml.Close()
+
+// parse the XML body
+p := parser.New(parser.XMLParseNoEnt)
+doc, err := p.ParseReader(xml)
+defer doc.Free()
+
+// use the XML document and return data to the user...
+If XXE is enabled in the configuration (parser.XMLParseNoEnt is set in the parser), and the user can control the XML input data. They can send the following XML
+
+<!DOCTYPE d [<!ENTITY e SYSTEM "file:///etc/passwd">]><t>&e;</t>
+After the file content gets parsed through ParseReader the response will retrieve the content of /etc/passwd
+
+💡Parsing of external entities is disabled by default. Make sure to check that before jumping to conclusions.
+
+Authentication
+Password storing
+The first rule you need to know is to never store the plaintext of the user's password. For security reasons, you need to use a one-way function to generate a hash for the given password and you can store this hash. The password needs to include salt and/or pepper before storing it, to make sure no two users have the same hash even if they use the same password. Let's take a look at the following code:
+
+package main
+
+import (
+        "context"
+        "crypto/rand"
+        "crypto/md5"
+)
+
+func main() {
+        ctx := context.Background()
+        email := []byte("john.doe@somedomain.com")
+        password := []byte("47;u5:B(95m72;Xq")
+        // create random word
+        salt := "RandomValue123ABC"
+        // let's create MD5(salt+password)
+        h := md5.New()
+        io.WriteString(h, salt)
+        io.WriteString(h, password)
+        h := hash.Sum(nil)
+        // this is here just for demo purposes
+        //
+        // fmt.Printf("email : %s\n", string(email))
+        // fmt.Printf("password: %s\n", string(password))
+        // fmt.Printf("salt : %x\n", salt)
+        // fmt.Printf("hash : %x\n", h)
+        // you're supposed to have a database connection
+        stmt, err := db.PrepareContext(ctx, "INSERT INTO accounts SET hash=?, salt=?, email=?")
+        if err != nil {
+                panic(err)
+        }
+        result, err := stmt.ExecContext(ctx, h, salt, email)
+        if err != nil {
+                panic(err)
+        }
+}
+
+The code above has many issues. First, it uses MD5 which is cryptographically broken and should not be used for secure applications. And salt (In cryptography, a salt is random data that is used as an additional input to a one-way function that hashes data, a password or passphrase. Salts are used to safeguard passwords in storage.) is a constant value. The hashing algorithms recommended by OWASP are bcrypt , PDKDF2 , Argon2 and scrypt. These will take care of hashing and salting passwords in a robust way. Any use for in-house built in logic needs a deep look because of the golden rule in crypto: never roll your own crypto!
+
+Logic
+Many issues occur while validating the user input before authenticating. Let's take a vulnerable example:
+
+func check(u, p string) bool {
+  password:= tt.GetUser(u).password
+  user:= tt.GetUser(u)
+  if u == user || p == password {
+    return true 
+  }
+  return false
+} 
+The previous code makes an illogical mistake. The OR operator returns true if one of the cases is true. Since the user exists in TT database, the following check will return true even if the password is wrong.
+Let's take another example:
+
+func auth(fn http.HandlerFunc) http.HandlerFunc {
+  return func(w http.ResponseWriter, r *http.Request) {
+    user, pass, _ := r.BasicAuth()
+    if !check(user, pass) {
+       w.Header().Set("WWW-Authenticate", "Basic realm=\\"MY REALM\\"")
+       http.Error(w, "Unauthorized.", 401)
+       // return needs to be here to fix this issue 
+    }
+    fn(w, r)
+  }
+}
+func check(u, p){
+    [...]
+}
+func handler(w http.ResponseWriter, r *http.Request) {
+    [...]
+}
+
+func main() {
+    http.HandleFunc("/",auth(handler))
+    log.Fatal(http.ListenAndServe(":8080", nil))
+}
+auth function has no return when the check fails. So, in both cases, it will trigger the callback function handler.
+
+Sessions control
+The flow of session process could be seen in the following image
+
+Image description
+Let's talk about session generating. The function below for example:
+
+// create a JWT and put in the clients cookie 
+func setToken(res http.ResponseWriter, req *http.Request) {
+     ...
+}
+You need to make sure that the session identifier is generated randomly, so it stays reliable against brute-forcing.
+
+token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) 
+signedToken, _ := token.SignedString([]byte("secret")) //our secret
+Now that we have a sufficiently strong token, we must also set the Domain, Path , Expires , HTTP only , Secure for our cookies. In this case, the Expires value is, in this example, set to 30 minutes since we are considering our application a low-risk application.
+
+// Our cookie parameter
+cookie := http.Cookie{
+Name: "Auth",
+Value: signedToken,
+Expires: expireCookie,
+HttpOnly: true,
+Path: "/",
+Domain: "127.0.0.1",
+Secure: true
+}
+http.SetCookie(res, &cookie) //Set the cookie
+Upon sign-in, a new session is always generated. The old session is never re-used, even if it is not expired. This will protect the application from Session Fixation. Furthermore, session identifiers should never be exposed in URL's. They should only be located in the HTTP cookie header.
+
+Access Control
+When a user tries to access authorization decisions, it must be checked if they are authorized to perform these actions. Access control highly relies on business logic. In case of a failure, access control should fail securely. In Go we can use defer to achieve this. Important operations where access controls must be enforced in order to prevent an unauthorized user from accessing them are as follows:
+
+File and other resources
+Protected URL's
+Protected functions
+Direct object references
+Services
+Application data
+User and data attributes and policy information.
+If any action is being taken, you must check the user capabilities before executing the action. For example,
+
+func main() {
+    // Init the mux router
+    router: = mux.NewRouter()
+    // Route handles & endpoints
+    // Get all books
+        router.HandleFunc("/books/", GetBooks).Methods("GET")
+    // Create a book
+        router.HandleFunc("/books/", CreateBook).Methods("POST")
+    // Delete a specific book by the bookID
+        router.HandleFunc("/books/{bookid}", DeleteBook).Methods("DELETE")
+    // Delete all books
+        router.HandleFunc("/books/", DeleteBooks).Methods("DELETE")
+    // serve the app
+        fmt.Println("Server at 8080")
+    log.Fatal(http.ListenAndServe(":8000", router))
+}
+If the code triggers any of the callback functions without checking, the user has the ability to create, delete, or perform any other action. This code is vulnerable to Broken Access Control.
+
+Cryptography
+Read: https://docs.google.com/presentation/d/1gMvkF-Tew1H9oF3Lh2IeQpOkk3bzSpE_TUj00hoztBE/edit#slide=id.g228b0426239_0_3201
+
+Block ciphers can only encrypt a fixed size of data. To encrypt more, one needs a block cipher mode of operation
+Unfortunately, most modes are insecure: ECB, CBC, CTR, CFB, etc. Depending on the usage, you can easily recover or modify the plaintext
+The most common stream cipher RC4 also allows you to modify, and, in certain cases (WEP), recover the plaintext
+Hashing
+Make sure that the hashing function is secure against Preimage attack, Birthday attack, ...etc. A list of insecure hash algorithms:
+
+MD2
+MD4
+MD5
+SHA-0
+SHA-1
+Panama
+HAVAL (disputable security, collisions found for HAVAL-128)
+Tiger (disputable, weaknesses found)
+SipHash (it is not a cryptographic hash function)
+List of secure hashing functions:
+
+SHA-2, SHA-256, SHA-512
+SHA-3, SHA3-256, SHA3-512, Keccak-256
+BLAKE2 / BLAKE2s / BLAKE2b
+RIPEMD-160
+package main
+
+import (
+        "crypto/md5"
+        "crypto/sha256"
+        "fmt"
+        "io"
+
+        "golang.org/x/crypto/blake2s"
+)
+
+func main() {
+        h_md5 := md5.New() // insecure 
+        h_sha := sha256.New() // secure but not for password without salt
+        h_blake2s, _ := blake2s.New256(nil) // secure 
+        io.WriteString(h_md5, "Welcome to Go Language Secure Coding Practices")
+        io.WriteString(h_sha, "Welcome to Go Language Secure Coding Practices")
+        io.WriteString(h_blake2s, "Welcome to Go Language Secure Coding Practices")
+        fmt.Printf("MD5 : %x\n", h_md5.Sum(nil))
+        fmt.Printf("SHA256 : %x\n", h_sha.Sum(nil))
+        fmt.Printf("Blake2s-256: %x\n", h_blake2s.Sum(nil))
+}
+Pseudo-random generators
+Generating random numbers is not obvious as it seems. For example,
+
+package main
+import (
+        "fmt"
+        "math/rand"
+)
+func main() {
+        fmt.Println("Random Number: ", rand.Intn(1984))
+}
+
+Running this code several times will show the following output:
+
+$ for i in {1..5}; do go run rand.go; done
+Random Number: 1825
+Random Number: 1825
+Random Number: 1825
+Random Number: 1825
+Random Number: 1825
+Why does it generate the same value every time?
+
+Because Go's math/rand is a deterministic pseudo-random number generator. Similar to many others, it uses a source, called a Seed. This Seed is solely responsible for the randomness of the deterministic pseudo-random number generator. If it is known or predictable, the same will happen in generated number sequence. This behavior could be fixed easily by using the math/rand Seed funciton.
+
+❗️math/rand is not safe to generate tokens, passwords, keys and other random values.
+
+rand package - crypto/rand - Go Packages must be used to generate random values instead of math/rand.
+
+Error Handling and Logging
+Error handling
+When dealing with error logs, developers should ensure no sensitive information is disclosed in the error responses, as well as guarantee that no error handlers leak information (e.g. debugging, or stack trace information).
+
+Logging
+All logging should be implemented by a master routine on a trusted system, and the developers should also ensure no sensitive data is included in the logs (e.g. passwords, session information, system details, etc.), nor is there any debugging or stack trace information. Additionally, logging should cover both successful and unsuccessful security events, with an emphasis on important log event data.
+An example of this is logging Access Tokens of users in OAuth flow.
+
+OpenConfigPost("/passport/path/to/function/v2/", antispam(this), open.AccessTokenHandlerV2),
+
+func AccessTokenHandlerV2(ctx *gin.Context) {
+    accessTokenParam, err := oauth2.GetAccessTokenRequestParam(ctx)
+    logs.CtxInfo(ctx, "[AccessTokenHandlerV2] %v", oauth2.GetRequestString(accessTokenParam))
+    /* ... */
+    token, perr := rpcHandlers.PassportOpenService.GetAccessTokenV2(ctx,
+        accessTokenParam.GetClientKey(), accessTokenParam.GetClientSecret(),
+        accessTokenParam.GetAuthorizationCode(), accessTokenParam.GetGrantType(),
+        accessTokenParam.RedirectURI, accessTokenParam.GetAppId())
+    logs.CtxInfo(ctx, "[GetAccessTokenV2] %v", token.String())
+}
+
+type AccessTokenRequestParam struct {
+    ClientKey         string `json:"client_key"`
+    GrantType         string `json:"grant_type"`
+    ClientSecret      string `json:"client_secret"`
+    AuthorizationCode string `json:"code"`
+    RedirectURI       string `json:"redirect_uri"`
+    AppId             int32
+}
+The code above was storing the ClientSecret and AuthorizationCode in the log file, which is insecure practice.
+Important event data most commonly refers to all:
+
+input validation failures.
+Authentication attempts, especially failures.
+Access control failures.
+Apparent tampering events, including unexpected changes to state data.
+Attempts to connect with invalid or expired session tokens.
+System exceptions.
+Administrative functions, including changes to security configuration settings.
+Backend TLS connection failures and cryptographic module failures.
+CSRF - Cross-Site Request Forgery
+Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they're currently authenticated.
+Let's say that foo.com uses HTTP GET requests to set the account's recovery email as shown:
+
+GET https://foo.com/account/recover?email=me@somehost.com
+The victim is authenticated at https://foo.com
+Attacker sends a chat message to the victim with the following link: https://foo.com/account/recover?email=me@attacker.com
+Victim's account recovery email address is changed to me@attacker.com , giving the attacker full control over it.
+The following code is vulnerable to CSRF
+
+package main
+
+import (
+        "net/http"
+)
+
+func main() {
+        r := mux.NewRouter()
+        r.HandleFunc("/signup", ShowSignupForm)
+        r.HandleFunc("/signup/post", SubmitSignupForm)
+        http.ListenAndServe(":8000") // No CSRF protection middleware
+}
+func ShowSignupForm(w http.ResponseWriter, r *http.Request) {
+
+}
+func SubmitSignupForm(w http.ResponseWriter, r *http.Request) {
+         // Do Stuff 
+}
+
+Regular Expressions
+Regular Expressions are a powerful tool that's widely used to perform searches and validations. Writing ReGex is a hard task and many developers make mistakes while writing it that could lead to security issues.
+
+ReDoS
+Regular Expression Denial of Service (ReDoS) is an algorithmic complexity attack that provokes a Denial of Service (DoS). ReDos attacks are caused by a regular expression that takes a very long time to be evaluated, exponentially related to input size. This exceptionally long time in the evaluation process is due to the implementation of the regular expression in use, for example, recursive backtracking ones.
+To fully understand the ReDos attack, please read the following article: https://blog.doyensec.com/2021/03/11/regexploit.html
+To detect evil regex use this website: https://devina.io/redos-checker
+
+Image description
+
+Faulty regexes
+Regex is used for a lot of security checks such as:
+
+Firewall rules
+Input validation
+Malware detection
+...
+Incorrectly deployed regex may cause security issues. For instance,
+SSRF protection via a blacklist
+The following regex is being used to detect internal IP addresses ^http?://(127\.|10\.|192\.168\.).*$
+
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "regexp"
+)
+
+func main() {
+
+    match, _ := regexp.MatchString("^http?://(127\.|10\.|192\.168\.).*$", "https://0.0.0.0")
+    fmt.Println(match)
+
+}
+It fails to match a case which is 0.0.0.0 that is the local IP. Learn regex in order to find wrongly configured regex.
+Another example,
+
+package main
+
+import (
+    "bytes"
+    "fmt"
+    "regexp"
+)
+func main() {
+    path := "[USER_INPUT]"  
+    match, _ := regexp.MatchString("^[\a-zA-Z0-9_]*", url)
+    if match {
+    // Send request 
+      var url = "https://api.github.com" + path;
+     ... 
+    }
+}
+The URL https://api.github.com does not end with a /. An attacker can thus send the request to any server via path=.attacker.com/hello, resulting in https://api.github.com.attacker.com/hello. When an attacker uses this to redirect the request to their server, the Authorization header gets leaked.
+To perform this attack, path must match the regular expression ^[/a-zA-Z0-9_]*. Looking at the regex, we see that the character * is a greedy quantifier, indicating that any amount of matches is allowed, including zero. The payload .attacker.com/hello does not match the pattern ^[/a-zA-Z0-9_]*, but since zero matches are allowed by the * quantifier, an attacker can use an arbitrary string as a payload.
+
+Checklist
+RCE
+Anywhere that a system command is being executed
+exec.Command()
+exec.CommandContext()
+syscall.Exec()
+os.StartProcess()
+exec.Cmd()
+SQL injection
+String concatenation: Plus operator,String append, join() function, Sprintf() method, Bytes buffer method, Strings builder method, and Repeat() Method.
+Vulnerable 3rd-Party Modules
+Use Snyk https://docs.snyk.io/getting-started/quickstart
+XSS
+Using the text/template package
+Dangrous functions:
+template.HTML()
+template.HTMLAttr()
+template.CSS()
+template.JS()
+template.JSStr()
+template.Srcset()
+template.URL()
+fmt.Fprintf()
+io.WriteString()
+writer.Write()
+SSRF
+http.X
+client.X
+File inclusion
+ioutil.ReadFile()
+filepath.Join()
+filepath.Clean()
+XXE
+libxml2
+parser.XMLParseNoEnt
+Auth
+Password storing
+Logic
+Session
+Unpredictable
+New after login
+Access control
+Logic
+Understand the task in hand and the threat model of it.
+Cryptgraphy
+Hashing
+Insecure algorithms such as MD5, SHA-1,...etc
+No salt or fixed salt
+Pseudo-Random Generators
+Math/rand to generate random numbers
+ECB, CBC, CTR, and CFB
+AES-GCM
+Password-based Encryption (RFC 2898)
+RSA PKCS v1.5 Encryption
+ECDSA
+Error Handling and Logging
+Error handling
+No sensitive information is disclosed in error responses
+No debug information
+Logging
+Ensure no sensitive data is included in the logs (e.g. passwords, session information, system details, etc.
+CSRF
+No CSRF protection middleware
+Regular expression
+Fuzz
+Test evil regex: https://devina.io/redos-checker
+Understand the expected output
+Study materials
+https://github.com/OWASP/Go-SCP/blob/master/dist/go-webapp-scp.pdf
+https://www.ctfiot.com/47181.html
+https://breakandpray.com/analyzing-a-broken-authentication-vulnerability-in-golang/
+https://docs.guardrails.io/docs/vulnerabilities/go/insecure_use_of_dangerous_function
+https://www.stackhawk.com/blog/golang-command-injection-examples-and-prevention/
+https://www.sonarsource.com/knowledge/code-challenges/advent-calendar-2022/
+https://www.elttam.com/blog/golang-codereview/
+https://gorm.io/docs/security.html
+
+                                                  
