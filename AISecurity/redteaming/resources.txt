@@ -1,0 +1,8 @@
+https://learn.microsoft.com/en-us/azure/architecture/patterns/strangler-fig
+
+https://replit.com/blog/npm-supply-chain-attack
+
+https://determinate.systems/
+
+https://cloud.google.com/load-balancing
+https://dxuuu.xyz/btrfs-internals.html
