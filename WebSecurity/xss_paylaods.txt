@@ -1,0 +1,3 @@
+<alert(1)
+onfocus="attributes[0].value=localName,new onfocus" 
+autofocus tabindex=1>
