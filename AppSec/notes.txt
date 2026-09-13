@@ -10,3 +10,7 @@
 * Cloud-native Security 
 * Security Engineering 
 * Threat Modeling and Security Architecture 
+
+[OWASP Top 10 Code Review]
+
+https://github.com/doretox/atomicvulns
