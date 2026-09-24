@@ -22,17 +22,16 @@
 
 ### Selected Security References and Prompt Imports
 
-Local prompt library located at `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/`. Files below were read; rules were synthesized, not copied.
+Local prompt library located at `/<PATH_TO_LOCAL_MACHINE>/`. Files below were read; rules were synthesized, not copied.
 
 | ID | Title | Path or URL | Purpose |
 |---|---|---|---|
-| `REF-PROMPT-NODE` | Secure Node.js Developer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Backend Frameworks/NodeJS/00 Secure Node.js Developer/PROMPT.md` | Server-side runtime hardening: prototype pollution, code execution, input validation, error handling, logging |
-| `REF-PROMPT-VUE` | Secure VueJS Developer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Client Side Frameworks/VueJS/00 Secure VueJS Developer/PROMPT.md` | Browser rendering safety: auto-escaping, `v-html` policy, URL validation, client storage |
-| `REF-PROMPT-JWT` | Secure JWT Developer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Web and API Security/09 Secure JWT Developer/PROMPT.md` | Token issuance, algorithm enforcement, claim validation, revocation, key management |
-| `REF-PROMPT-API` | Secure API Developer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Web and API Security/06 Secure API Developer/PROMPT.md` | REST endpoint authN/authZ, BOLA prevention, mass assignment, response hygiene, rate limiting |
-| `REF-PROMPT-ABAC` | ABAC Architect | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Authorization/02 ABAC Architect/PROMPT.md` | PDP/PEP/PIP separation, attribute trust levels, policy combination, policy testing |
-| `REF-PROMPT-QUALITY` | Secure Code Quality Engineer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Code Quality/00 General Code Quality Prompts/PROMPT.md` | Complexity limits, fail-closed error discipline, centralized validation, auditable security-critical code paths |
-| `REF-PROMPT-TF-AWS` | Secure Terraform AWS Developer | `/Users/jmanico/Dropbox/github/platform/context/prompts/code security/Infrastructure/Terraform/01 Secure Terraform AWS Developer/PROMPT.md` | IAM least privilege, encryption at rest and in transit, network tiering, Terraform state protection |
+| `REF-PROMPT-NATIVE` | Secure C/C++ Developer | `/<PATH_TO_LOCAL>/native/PROMPT.md` | Server-side runtime hardening: prototype pollution, code execution, input validation, error handling, logging |
+| `REF-PROMPT-PYTHON` | Secure Python Developer | `/<PATH_TO_LOCAL>/python/PROMPT.md` | Browser rendering safety: auto-escaping, `v-html` policy, URL validation, client storage |
+| `REF-PROMPT-JWT` | Secure JWT Developer | `/<PATH_TO_LOCAL>/jwt/PROMPT.md` | Token issuance, algorithm enforcement, claim validation, revocation, key management |
+| `REF-PROMPT-API` | Secure API Developer | `/<PATH_TO_LOCAL>/api/PROMPT.md` | REST endpoint authN/authZ, BOLA prevention, mass assignment, response hygiene, rate limiting |
+| `REF-PROMPT-ABAC` | ABAC Architect | `/<PATH_TO_LOCAT>/rbac/PROMPT.md` | PDP/PEP/PIP separation, attribute trust levels, policy combination, policy testing |
+| `REF-PROMPT-TF-AWS` | Secure Terraform AWS Developer | `/<PATH_TO_LOCAL>/tfaws/PROMPT.md` | IAM least privilege, encryption at rest and in transit, network tiering, Terraform state protection |
 
 Public references selected as authoritative defaults for the identified stack. These were selected, not retrieved; no claim is made that their contents were read in this session.
 
