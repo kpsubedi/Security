@@ -10,7 +10,7 @@ Cryptography is:
 Cryptography is not:
 - The solution to all security problems 
 - Reliable unless implemented and used properly 
-- Something you should try to invent yourself 
+- Something you shouldnot try to invent yourself 
   * many many examples of broken ad-hoc designs 
 
   
