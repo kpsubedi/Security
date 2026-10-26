@@ -1,0 +1,21 @@
+OSAI
+----
+Some of the resources behind my OffSec OSAI prep!! 🙌👽
+Experimenting in the capstone and challenge labs helped me the most: testing ideas, breaking things, making changes, and trying again 😅
+I spent time reverse engineering other agents to understand how their models, tools, context, and execution loops worked together.
+That shaped my AI-assisted offensive security agent: tracking proven findings, failed attempts, and evidence I could manually validate.
+▪️ Custom skills
+I used Codex with skills I built from OSAI, OSCP, web app testing, and red teaming material.
+Projects I studied, plus others to explore 👇
+▪️ Agent harnesses
+• Pi: https://lnkd.in/eNbPTawQ
+• oh-my-pi: https://lnkd.in/e_6FRSzh
+▪️ Agent systems & security frameworks
+• Strix: https://lnkd.in/eFjuPWPp
+• PentAGI: https://lnkd.in/eqrWG86q
+• HexStrike AI: https://lnkd.in/eHQyiW4c
+• Cairn: https://lnkd.in/eFPxG9Xc
+• ARTEX (community fork): https://lnkd.in/eqUwpPeJ
+▪️ Testing & evaluation
+• garak (LLM vulnerability scanner): https://lnkd.in/ef8UNBcF
+• Langfuse (tracing/evaluation): https://lnkd.in/epdGXUKw
