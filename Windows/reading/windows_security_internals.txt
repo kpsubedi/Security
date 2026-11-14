@@ -16,7 +16,7 @@ Part I An Overview of The Windows Operating System
 ==================================================
 Core Architectural Difference: Windows vs Linux
 -----------------------------------------------
-Linux: everything is a file. 
+Linux: everything is a file including hardware e.g., /dev/had, /dev/tty 
 Windows: API oriented, and though APIs can provide a much richer set of capabilities, they come at the expense of simplicity. 
 - So, exploring an API-oriented operating system is more difficult. 
 - You need to read the API documentation, write code, compile and run it, and debug the results.
